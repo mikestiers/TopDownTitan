@@ -11,13 +11,13 @@ public class Enemy : MonoBehaviour
     public float health;
     public Weapon weapon;
     public CapsuleCollider enemyCollider;
+    public Transform playerTransform;
     public Vector3 downDirection => -transform.up;
 
     public virtual void OnTriggerEnter(Collider other)
     {
         if (other.tag == "ScreenPerimiter")
         {
-            Debug.Log("Destroyed: " + other);
             Destroy(gameObject);
         }
     }

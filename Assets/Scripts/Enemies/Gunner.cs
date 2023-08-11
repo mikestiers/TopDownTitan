@@ -12,7 +12,7 @@ public class Gunner : Enemy
         base.OnTriggerEnter(other);
         if (other.tag == "Wall")
         {
-            hitWall = true;
+            hitWall = !hitWall;
         }
     }
 
