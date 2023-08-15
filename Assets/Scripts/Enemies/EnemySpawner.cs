@@ -37,7 +37,9 @@ public class EnemySpawner : MonoBehaviour
 
         // Set the initial position of the enemy at the top of the screen relative to the player
         // TODO possible bug: get the actual top of the screen instead of calculating based on player transform
-        Vector3 spawnPosition = new Vector3(Random.Range(-5f, 5f), player.position.y + 10, player.position.z);
+        //Vector3 spawnPosition = new Vector3(Random.Range(-5f, 5f), player.position.y + 10, player.position.z);
+        Vector3 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(Random.Range(0.1f, 0.9f), 1, Camera.main.nearClipPlane));
+        spawnPosition = new Vector3(spawnPosition.x, spawnPosition.y, 0);
 
         // Spawn a random enemy
         int randomIndex = Random.Range(0, enemyPrefabs.Count);

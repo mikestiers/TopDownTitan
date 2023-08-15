@@ -22,6 +22,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+
     //void Update()
     //{
     //    if (Time.realtimeSinceStartup >= fireCoolDown)

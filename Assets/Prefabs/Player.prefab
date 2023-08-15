@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034298aafbb464c47b504cadf4dbf214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 7.5
   rb: {fileID: 3529919929195780177}
   weapon: {fileID: 3529919929982014743}
   playerCollider: {fileID: 3529919929195775917}

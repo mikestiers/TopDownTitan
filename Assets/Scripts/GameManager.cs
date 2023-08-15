@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public PlayerController player;
+    [SerializeField] private PlayerController player;
+    public Transform playerTransform;
     public Transform spawnPosition;
     // Start is called before the first frame update
-    void Start()
-    {
-        Instantiate(player.transform, spawnPosition);
-    }
+    //void Awake()
+    //{
+    //    playerTransform = Instantiate(player.transform, spawnPosition.position, Quaternion.identity);
+    //}
 
     // Update is called once per frame
     void Update()
