@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private PlayerController player;
     public Transform playerTransform;
     public Transform spawnPosition;
-    // Start is called before the first frame update
-    //void Awake()
-    //{
-    //    playerTransform = Instantiate(player.transform, spawnPosition.position, Quaternion.identity);
-    //}
+    public Text scoreText;
+    private int score = 0;
 
-    // Update is called once per frame
-    void Update()
+    public void IncreaseScore(int amount)
     {
-        
+        score += amount;
+        UpdateScoreUI();
     }
+
+    void UpdateScoreUI()
+    {
+        scoreText.text = $"Score\n{score}";
+    }
+
 }

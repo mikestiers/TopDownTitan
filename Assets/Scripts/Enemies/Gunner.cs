@@ -16,13 +16,13 @@ public class Gunner : Enemy
         }
     }
 
-    void Start()
+    protected override void Start()
     {
         int randomDirection = Random.Range(0, 2);
         hitWall = randomDirection == 1;
+        base.Start();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Time.realtimeSinceStartup >= fireCoolDown)

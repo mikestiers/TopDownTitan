@@ -22,11 +22,24 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Start()
+    protected virtual void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            DestroyEnemy();
+        }
+    }
+
+    void DestroyEnemy()
+    {
+        Destroy(gameObject);
+    }
 
     //void Update()
     //{
