@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public Weapon weapon;
     public BoxCollider playerCollider;
-
+    private Vector3 targetPosition;
     Vector3 moveDirection;
 
     // Update is called once per frame
@@ -36,14 +36,20 @@ public class PlayerController : MonoBehaviour
 
                 // Convert the touch position to world coordinates
                 Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                touchPosition.z = 0; // Set z-axis to 0 to prevent movement in the z-axis
+                touchPosition.z = Camera.main.nearClipPlane;
+                //touchPosition.z = 0; // Set z-axis to 0 to prevent movement in the z-axis
 
                 // Cast a ray from the camera to the touch position
                 // because I used 3D instead of 2D, otherwise collider2d has an overlappoint method
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                if (Physics.Raycast(ray, out hit))
+
+                float raycastDistance = 100f; // Maximum raycast distance
+                float sphereRadius = 5.0f; // Radius of the sphere
+                if (Physics.SphereCast(ray, sphereRadius, out hit, raycastDistance))
                 {
+                //    if (Physics.Raycast(ray, out hit, 1000f)) // remove 1000f probably
+                //{
                     // Check if the ray hit the player's collider
                     if (hit.collider.gameObject == gameObject)
                     {
@@ -80,7 +86,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         // This is only for keyboard / gamepad
         rb.velocity = new Vector3(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed, 0);
