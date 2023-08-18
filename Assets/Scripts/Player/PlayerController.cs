@@ -7,13 +7,19 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 7.5f;
     public float touchMoveSpeed = 15f;
     public Rigidbody rb;
+    public Weapon startingWeaponPrefab;
     public Weapon weapon;
     public BoxCollider playerCollider;
     public AudioClip deathSound;
     private Vector3 targetPosition;
     Vector3 moveDirection;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        // Instantiate the starting weapon and set it as the active weapon
+        weapon = Instantiate(startingWeaponPrefab, transform);
+    }
+
     void Update()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
@@ -103,5 +109,15 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 0f;
             HUD.singleton.gameOverMenuCanvas.SetActive(true);
         }
+    }
+
+    public void ChangeWeapon(Weapon newWeaponPrefab, Sprite newWeaponIcon)
+    {
+        if (weapon != null)
+            Destroy(weapon.gameObject);
+
+        weapon = Instantiate(newWeaponPrefab, transform);
+
+        HUD.singleton.AddWeapon(newWeaponIcon);
     }
 }

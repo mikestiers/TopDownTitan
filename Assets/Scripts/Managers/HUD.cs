@@ -11,8 +11,11 @@ public class HUD : Singleton<HUD>
     public Text livesText;
     public Text scoreText;
     public Text highScoreText;
-    public Grid weaponSelectorGrid;
+    public GridLayoutGroup weaponSelectorGrid;
     public Text shieldText;
+    public Button blasterButton;
+    public Button plasmaCanonButton;
+    public Button lightningArcButton;
     
     [Header("Pause Menu")]
     public GameObject pauseMenuCanvas;
@@ -85,18 +88,33 @@ public class HUD : Singleton<HUD>
 
     public void UpdateShields(int shields)
     {
-        shieldText.text = $"Shields: {shields}";
+        shieldText.text = $"Shields\n{shields}";
     }
 
     public void UpdateScore(int score)
     {
-        scoreText.text = $"Score\n{score}";
+        scoreText.text = $"Score\n{score.ToString()}";
         if (GameManager.singleton.IsHighScore(score))
             UpdateHighScore(score);
     }
 
     public void UpdateHighScore(int score)
     {
-        highScoreText.text = $"High Score\n{score}";
+        highScoreText.text = $"High Score\n{score.ToString()}";
     }
+
+    public void AddWeapon(Sprite newWeaponIcon)
+    {
+        // Create a new Image component and set its sprite to the new weapon icon
+        Image newImage = new GameObject("WeaponIcon").AddComponent<Image>();
+        newImage.sprite = newWeaponIcon;
+
+        // Add the new Image component to the weaponSelectorGrid
+        newImage.transform.SetParent(weaponSelectorGrid.transform, false);
+    }
+
+    //private bool IsIconPresent(Sprite newWeaponIcon)
+    //{
+    //    return weaponIcons.Any(icon => icon.sprite == newWeaponIcon);
+    //}
 }

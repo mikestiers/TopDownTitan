@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8710472836297315938}
   - component: {fileID: 8710472836297315942}
   - component: {fileID: 8710472836297315937}
-  - component: {fileID: 8710472836297315939}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Enemy
@@ -27,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8710472836297315949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.035056353, y: 1.14, z: -0.08741253}
+  m_LocalPosition: {x: -0.005, y: 0.619, z: -0.08741253}
   m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -85,24 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8710472836297315939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8710472836297315949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b29014be5140d4fb28a33468b041cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2894261615961671903, guid: 5eb08ffeb0ceaaf44a9819b2cd6ce95a,
-    type: 3}
-  firePoint: {fileID: 8710472838242503684}
-  fireSound: {fileID: 8300000, guid: 359ab0671ed08fa45be286847a2f7f52, type: 3}
-  fireForce: 1000
-  fireRate: 0.1
 --- !u!1 &8710472836988810369
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,9 +97,9 @@ GameObject:
   - component: {fileID: 8710472836988810375}
   - component: {fileID: 8710472836988810374}
   - component: {fileID: 8710472836988810427}
-  - component: {fileID: 2164151689820825186}
+  - component: {fileID: 8901861609141627797}
   m_Layer: 0
-  m_Name: Gunner
+  m_Name: Seeker
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +128,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8710472836988810369}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &8710472836988810375
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -168,7 +149,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: da4878cac9cba4844beec7ca34eb16f7, type: 2}
+  - {fileID: 2100000, guid: 259aec5f91e9c2c459b96594922b93e5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -201,9 +182,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1.0404062
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.0063130856, z: 0}
 --- !u!54 &8710472836988810427
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -220,7 +201,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2164151689820825186
+--- !u!114 &8901861609141627797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,7 +210,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8710472836988810369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12574b94a167af4478ed155abc7ba8d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 0705bf7343333db46938286697262ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireCoolDown: 2
@@ -237,11 +218,10 @@ MonoBehaviour:
   attackPattern: 
   moveSpeed: 5
   health: 0
-  deathSound: {fileID: 8300000, guid: 4aea4e7a4e4c7fc4b94c6742ef5ce112, type: 3}
-  weapon: {fileID: 8710472836297315939}
+  deathSound: {fileID: 0}
+  weapon: {fileID: 1534715240243947371, guid: 6b802d63b930918419865f7d4b06cff7, type: 3}
   enemyCollider: {fileID: 8710472836988810374}
-  playerTransform: {fileID: 3529919929195780176, guid: 371bcdebf175e4a4fba68dec567774ce,
-    type: 3}
+  playerTransform: {fileID: 0}
 --- !u!1 &8710472838242503687
 GameObject:
   m_ObjectHideFlags: 0

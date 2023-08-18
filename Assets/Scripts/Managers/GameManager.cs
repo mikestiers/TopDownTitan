@@ -19,6 +19,10 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         AudioManager.singleton.PlayMusic(music);
+        //GameManager.singleton.score = 0;
+        //HUD.singleton.UpdateScore(0);
+        //GameManager.singleton.shields = 1;
+        //HUD.singleton.UpdateShields(GameManager.singleton.shields);
     }
 
     public void IncreaseScore(int amount)

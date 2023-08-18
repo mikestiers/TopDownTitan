@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Drone : Enemy
 {
+    private void Start()
+    {
+        // Instantiate the starting weapon and set it as the active weapon
+        weapon = Instantiate(weapon, transform);
+    }
     void Update()
     {
         if (Time.realtimeSinceStartup >= fireCoolDown)

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8710472836297315938}
   - component: {fileID: 8710472836297315942}
   - component: {fileID: 8710472836297315937}
-  - component: {fileID: 8710472836297315939}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Enemy
@@ -27,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8710472836297315949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.035056353, y: 0.64, z: -0.08741253}
+  m_LocalPosition: {x: 0.035056353, y: 1.14, z: -0.08741253}
   m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -85,24 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8710472836297315939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8710472836297315949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b29014be5140d4fb28a33468b041cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2894261615961671903, guid: 5eb08ffeb0ceaaf44a9819b2cd6ce95a,
-    type: 3}
-  firePoint: {fileID: 8710472838242503684}
-  fireSound: {fileID: 8300000, guid: 501367286390a0a438466b2fb06b808c, type: 3}
-  fireForce: 1000
-  fireRate: 0.1
 --- !u!1 &8710472836988810369
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,9 +97,9 @@ GameObject:
   - component: {fileID: 8710472836988810375}
   - component: {fileID: 8710472836988810374}
   - component: {fileID: 8710472836988810427}
-  - component: {fileID: 3907280450402154185}
+  - component: {fileID: -1226246500312765526}
   m_Layer: 0
-  m_Name: Juggernaut
+  m_Name: Interceptor
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,8 +113,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8710472836988810369}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.4851, y: 3.76, z: 0}
-  m_LocalScale: {x: 3.6389046, y: 1, z: 1}
+  m_LocalPosition: {x: -0.6071, y: 3.4728, z: 0}
+  m_LocalScale: {x: 2.4141, y: 0.7128, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8710472836297315938}
@@ -147,7 +128,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8710472836988810369}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &8710472836988810375
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -168,7 +149,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ebfab4823becc3489392583e939bbd3, type: 2}
+  - {fileID: 2100000, guid: 9926176e11fa8924f9b3645943e7fe2f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -201,9 +182,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 3.3867843
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.00000016724086, z: 0}
 --- !u!54 &8710472836988810427
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -220,7 +201,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3907280450402154185
+--- !u!114 &-1226246500312765526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,21 +210,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 8710472836988810369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1117e7c2b53cf7f4588866fcacb299ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e762140dada6ff740a0c620b05f913f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireCoolDown: 2
   enemyType: 
   attackPattern: 
   moveSpeed: 5
-  health: 100
-  deathSound: {fileID: 8300000, guid: 0a4559b33e938dc47ab3c6361967a212, type: 3}
-  weapon: {fileID: 8710472836297315939}
+  health: 0
+  deathSound: {fileID: 8300000, guid: ff4cb7be5bd5a00458dd58da929b06cb, type: 3}
+  weapon: {fileID: 1534715240243947371, guid: 092b3fd456feeb34dac5bb62dd908698, type: 3}
   enemyCollider: {fileID: 8710472836988810374}
   playerTransform: {fileID: 0}
-  hoverRange: 5
-  hoverSpeed: 1
-  moveRange: 2
+  avoidanceSpeed: 20
+  avoidanceDistance: 20
+  bulletLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &8710472838242503687
 GameObject:
   m_ObjectHideFlags: 0

@@ -131,11 +131,11 @@ MonoBehaviour:
   moveSpeed: 7.5
   touchMoveSpeed: 15
   rb: {fileID: 3529919929195780177}
-  weapon: {fileID: 3529919929982014743}
+  startingWeaponPrefab: {fileID: 1534715240243947371, guid: 092b3fd456feeb34dac5bb62dd908698,
+    type: 3}
+  weapon: {fileID: 0}
   playerCollider: {fileID: 3529919929195775917}
   deathSound: {fileID: 8300000, guid: 9c0318ac749a66f42a7488daef00bd2f, type: 3}
-  lives: 0
-  shields: 1
 --- !u!1 &3529919929982014742
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +148,6 @@ GameObject:
   - component: {fileID: 3529919929982014747}
   - component: {fileID: 3529919929982014746}
   - component: {fileID: 3529919929982014745}
-  - component: {fileID: 3529919929982014743}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -235,24 +234,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3529919929982014743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3529919929982014742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b29014be5140d4fb28a33468b041cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2894261615961671903, guid: 5eb08ffeb0ceaaf44a9819b2cd6ce95a,
-    type: 3}
-  firePoint: {fileID: 3529919930592089083}
-  fireSound: {fileID: 8300000, guid: 416d78b4433426f4193b803bac3c7ffb, type: 3}
-  fireForce: 2000
-  fireRate: 0.1
 --- !u!1 &3529919930592089082
 GameObject:
   m_ObjectHideFlags: 0

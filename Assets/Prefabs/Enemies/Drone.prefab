@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8710472836297315938}
   - component: {fileID: 8710472836297315942}
   - component: {fileID: 8710472836297315937}
-  - component: {fileID: 8710472836297315939}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Enemy
@@ -85,24 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8710472836297315939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8710472836297315949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b29014be5140d4fb28a33468b041cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2894261615961671903, guid: 5eb08ffeb0ceaaf44a9819b2cd6ce95a,
-    type: 3}
-  firePoint: {fileID: 8710472838242503684}
-  fireSound: {fileID: 8300000, guid: 501367286390a0a438466b2fb06b808c, type: 3}
-  fireForce: 1000
-  fireRate: 0.1
 --- !u!1 &8710472836988810369
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,9 +219,11 @@ MonoBehaviour:
   moveSpeed: 5
   health: 0
   deathSound: {fileID: 8300000, guid: 4f2f173ae5163a04cb8344b9b8fd7799, type: 3}
-  weapon: {fileID: 8710472836297315939}
+  weapon: {fileID: 1534715240243947371, guid: 092b3fd456feeb34dac5bb62dd908698, type: 3}
   enemyCollider: {fileID: 8710472836988810374}
   playerTransform: {fileID: 3529919929195780176, guid: 371bcdebf175e4a4fba68dec567774ce,
+    type: 3}
+  startingWeaponPrefab: {fileID: 1534715240243947371, guid: 092b3fd456feeb34dac5bb62dd908698,
     type: 3}
 --- !u!1 &8710472838242503687
 GameObject:

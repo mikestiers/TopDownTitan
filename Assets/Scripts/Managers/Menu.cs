@@ -39,9 +39,6 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
         Time.timeScale = 1f;
-        GameManager.singleton.score = 0;
-        HUD.singleton.UpdateShields(GameManager.singleton.shields);
-        HUD.singleton.UpdateScore(GameManager.singleton.score);
     }
 
     void InstructionsMenu()
