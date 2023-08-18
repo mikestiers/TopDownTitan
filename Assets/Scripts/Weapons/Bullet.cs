@@ -24,5 +24,14 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject); // Destroy the bullet
         }
+        else if (other.CompareTag("Player"))
+        {
+            PlayerController player = other.GetComponent<PlayerController>();
+            if (GameManager.singleton.shields >= 0)
+            {
+                Destroy(gameObject); // Destroy the bullet
+                player.TakeDamage(damageAmount);
+            }
+        }
     }
 }

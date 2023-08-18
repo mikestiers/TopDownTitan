@@ -20,6 +20,9 @@ public class Menu : MonoBehaviour
     public GameObject creditsCanvas;
     public Button creditsBackButton;
 
+    [Header("Audio")]
+    public AudioClip music;
+
     void Start()
     {
         playButton.onClick.AddListener(Play);
@@ -27,11 +30,18 @@ public class Menu : MonoBehaviour
         creditsButton.onClick.AddListener(CreditsMenu);
         instructionsBackButton.onClick.AddListener(BackToMain);
         creditsBackButton.onClick.AddListener(BackToMain);
+        AudioManager.singleton.PlayMusic(music);
+        AudioManager.singleton.SetMusicVolume(25.0f);
+        AudioManager.singleton.SetSoundEffectVolume(25.0f);
     }
 
     void Play()
     {
         SceneManager.LoadScene("Game");
+        Time.timeScale = 1f;
+        GameManager.singleton.score = 0;
+        HUD.singleton.UpdateShields(GameManager.singleton.shields);
+        HUD.singleton.UpdateScore(GameManager.singleton.score);
     }
 
     void InstructionsMenu()

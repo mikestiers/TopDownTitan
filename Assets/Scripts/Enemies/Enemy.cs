@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public string attackPattern;
     public float moveSpeed = 5.0f;
     public float health;
+    public AudioClip deathSound;
     public Weapon weapon;
     public CapsuleCollider enemyCollider;
     public Transform playerTransform;
@@ -19,6 +20,12 @@ public class Enemy : MonoBehaviour
         if (other.tag == "ScreenPerimiter")
         {
             Destroy(gameObject);
+        }
+
+        if (other.tag == "Player")
+        {
+            PlayerController player = other.GetComponent<PlayerController>();
+            player.TakeDamage(1);
         }
     }
 
@@ -33,6 +40,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             DestroyEnemy();
+            AudioManager.singleton.PlaySoundEffect(deathSound);
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class HUD : MonoBehaviour
+public class HUD : Singleton<HUD>
 {
     [Header("Game HUD")]
     public GameObject gameHudCanvas;
@@ -12,7 +12,7 @@ public class HUD : MonoBehaviour
     public Text scoreText;
     public Text highScoreText;
     public Grid weaponSelectorGrid;
-    public Text healthText;
+    public Text shieldText;
     
     [Header("Pause Menu")]
     public GameObject pauseMenuCanvas;
@@ -23,12 +23,19 @@ public class HUD : MonoBehaviour
     public Button soundOnOffbutton;
     public Slider soundVolumeSlider;
 
+    [Header("Game Over Menu")]
+    public GameObject gameOverMenuCanvas;
+    public Button restartButton;
+
     void Start()
     {
         resumeButton.onClick.AddListener(Resume);
         quitButton.onClick.AddListener(Quit);
-        musicOnOffButton.onClick.AddListener(SetMusic);
-        soundOnOffbutton.onClick.AddListener(SetSound);
+        musicOnOffButton.onClick.AddListener(MuteMusic);
+        musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
+        soundOnOffbutton.onClick.AddListener(MuteSound);
+        soundVolumeSlider.onValueChanged.AddListener(SetSoundVolume);
+        restartButton.onClick.AddListener(Quit);
     }
 
     private void Update()
@@ -51,16 +58,45 @@ public class HUD : MonoBehaviour
 
     void Quit()
     {
+        HUD.singleton.gameOverMenuCanvas.SetActive(false);
+        SceneManager.UnloadSceneAsync("Game");
         SceneManager.LoadScene("Menu");
     }
 
-    void SetMusic()
+    void MuteMusic()
     {
-
+        AudioManager.singleton.SetMusicVolume(musicVolumeSlider.value);
     }
 
-    void SetSound()
+    void MuteSound()
     {
+        AudioManager.singleton.SetSoundEffectVolume(soundVolumeSlider.value);
+    }
 
+    void SetMusicVolume(float volume)
+    {
+        AudioManager.singleton.SetMusicVolume(volume);
+    }
+
+    void SetSoundVolume(float volume)
+    {
+        AudioManager.singleton.SetSoundEffectVolume(volume);
+    }
+
+    public void UpdateShields(int shields)
+    {
+        shieldText.text = $"Shields: {shields}";
+    }
+
+    public void UpdateScore(int score)
+    {
+        scoreText.text = $"Score\n{score}";
+        if (GameManager.singleton.IsHighScore(score))
+            UpdateHighScore(score);
+    }
+
+    public void UpdateHighScore(int score)
+    {
+        highScoreText.text = $"High Score\n{score}";
     }
 }

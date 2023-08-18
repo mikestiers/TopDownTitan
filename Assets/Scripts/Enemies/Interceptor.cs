@@ -5,38 +5,46 @@ using UnityEngine;
 public class Interceptor : Enemy
 {
     Vector3 directionToPlayer;
-    private Vector3 initialPosition;
-    public float hoverRange = 1.0f; // Range of vertical hover motion
-    public float hoverSpeed = 1.0f; // Speed of vertical hover motion
-    public float moveRange = 2.0f;  // Range of horizontal movement
-    //public float moveSpeed = 2.0f;  // Speed of horizontal movement
+    public float avoidanceSpeed = 20.0f;
+    public float avoidanceDistance = 2.0f;
+    public LayerMask bulletLayer;
+    private Vector3 avoidanceDirection;
 
-    //private void Start()
-    //{
-    //    initialPosition = transform.position;
-    //}
+    private bool isAvoiding = false;
 
-    //void Update()
-    //{
-    //    if (Time.realtimeSinceStartup >= fireCoolDown)
-    //    {
-    //        fireCoolDown = Time.realtimeSinceStartup + fireCoolDown;
-    //        weapon.Fire(enemyCollider);
-    //    }
+    void Update()
+    {
+        if (Time.realtimeSinceStartup >= fireCoolDown)
+        {
+            fireCoolDown = Time.realtimeSinceStartup + fireCoolDown;
+            weapon.Fire(enemyCollider);
+        }
 
-    //    // Calculate the movement direction toward the player (negate it so it moves down the screen)
-    //    directionToPlayer = -(playerTransform.position - transform.position);
+        // Check for incoming bullets
+        RaycastHit hit;
+        Vector3 rayDirection = transform.up * -1; // Ray direction is opposite of the enemy's up direction
+        if (Physics.Raycast(transform.position, rayDirection, out hit, avoidanceDistance, bulletLayer))
+        {
+            // Avoid the bullet
+            isAvoiding = true;
+            avoidanceDirection = Vector3.Cross(rayDirection, Vector3.forward).normalized;
+        }
+        else
+        {
+            // No bullets detected, stop avoiding
+            isAvoiding = false;
+        }
 
-    //    // Calculate vertical hover motion using Mathf.Sin
-    //    float verticalOffset = Mathf.Sin(Time.time * hoverSpeed) * hoverRange;
-
-    //    // Calculate horizontal movement using Mathf.PingPong
-    //    float horizontalOffset = Mathf.PingPong(Time.time * moveSpeed, moveRange * 2.0f) - moveRange;
-
-    //    // Calculate the new position
-    //    Vector3 newPosition = initialPosition + new Vector3(horizontalOffset, verticalOffset, 0f);
-
-    //    // Update the enemy's position
-    //    transform.position = newPosition;
-    //}
+        // Move the enemy
+        if (isAvoiding)
+        {
+            // Move in the avoidance direction
+            transform.Translate(avoidanceSpeed * Time.deltaTime * avoidanceDirection);
+        }
+        else
+        {
+            // Move down the screen
+            transform.Translate(moveSpeed * Time.deltaTime * downDirection);
+        }
+    }
 }

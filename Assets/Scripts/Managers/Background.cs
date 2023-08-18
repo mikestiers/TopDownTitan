@@ -5,6 +5,7 @@ using UnityEngine;
 public class Background : MonoBehaviour
 {
     public float scrollSpeed = 10.0f;
+    public float backgroundHeight = -30.0f;
     public Vector3 topPosition;
 
     void Update()
@@ -13,7 +14,7 @@ public class Background : MonoBehaviour
         transform.Translate(-transform.up * scrollSpeed * Time.deltaTime);
 
         // Reset the position when the background goes off-screen
-        if (transform.position.y < -20.0f) // whatever the height is of the bg image
+        if (transform.position.y < backgroundHeight) // whatever the height is of the bg image
         {
             transform.position = topPosition; // new Vector3(transform.position.x, 5.0f, transform.position.z);
         }

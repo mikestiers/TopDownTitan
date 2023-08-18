@@ -100,7 +100,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2894261615961671903, guid: 5eb08ffeb0ceaaf44a9819b2cd6ce95a,
     type: 3}
   firePoint: {fileID: 8710472838242503684}
+  fireSound: {fileID: 8300000, guid: 359ab0671ed08fa45be286847a2f7f52, type: 3}
   fireForce: 1000
+  fireRate: 0.1
 --- !u!1 &8710472836988810369
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,12 +237,15 @@ MonoBehaviour:
   attackPattern: 
   moveSpeed: 5
   health: 0
+  deathSound: {fileID: 8300000, guid: ff4cb7be5bd5a00458dd58da929b06cb, type: 3}
   weapon: {fileID: 8710472836297315939}
   enemyCollider: {fileID: 8710472836988810374}
   playerTransform: {fileID: 0}
-  hoverRange: 1
-  hoverSpeed: 1
-  moveRange: 2
+  avoidanceSpeed: 20
+  avoidanceDistance: 20
+  bulletLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &8710472838242503687
 GameObject:
   m_ObjectHideFlags: 0

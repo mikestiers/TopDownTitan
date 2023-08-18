@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     public Weapon weapon;
     public BoxCollider playerCollider;
+    public AudioClip deathSound;
     private Vector3 targetPosition;
     Vector3 moveDirection;
 
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(touch.position);
 
                 float raycastDistance = 100f; // Maximum raycast distance
-                float sphereRadius = 5.0f; // Radius of the sphere
+                float sphereRadius = 1.0f; // Radius of the sphere
                 if (Physics.SphereCast(ray, sphereRadius, out hit, raycastDistance))
                 {
                 //    if (Physics.Raycast(ray, out hit, 1000f)) // remove 1000f probably
@@ -57,24 +58,21 @@ public class PlayerController : MonoBehaviour
                         switch (touch.phase)
                         {
                             case TouchPhase.Began:
-
                                 // Fire the weapon when the touch starts
                                 weapon.Fire(playerCollider);
                                 break;
 
                             case TouchPhase.Moved:
+                                // Set the player's position to the touch position
+                                Vector3 targetPosition = touchPosition;
+                                targetPosition.z = transform.position.z; // Keep the original z-axis position
+                                transform.position = targetPosition;
 
                                 // Fire the weapon when the touch moves
                                 weapon.Fire(playerCollider);
                                 break;
 
                             case TouchPhase.Stationary:
-
-                                // Set the player's position to the touch position
-                                Vector3 targetPosition = touchPosition;
-                                targetPosition.z = transform.position.z; // Keep the original z-axis position
-                                transform.position = targetPosition;
-
                                 // Fire the weapon when the touch does not move
                                 weapon.Fire(playerCollider);
 
@@ -90,5 +88,20 @@ public class PlayerController : MonoBehaviour
     {
         // This is only for keyboard / gamepad
         rb.velocity = new Vector3(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed, 0);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if (GameManager.singleton.shields > 0)
+        {
+            GameManager.singleton.shields -= 1;
+            HUD.singleton.UpdateShields(GameManager.singleton.shields);
+        }
+        else if (GameManager.singleton.shields <= 0)
+        {
+            AudioManager.singleton.PlaySoundEffect(deathSound);
+            Time.timeScale = 0f;
+            HUD.singleton.gameOverMenuCanvas.SetActive(true);
+        }
     }
 }

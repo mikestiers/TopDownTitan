@@ -2,17 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    public static AudioManager audioManager;
+    [SerializeField] private AudioSource soundEffectsAudioSource;
+    [SerializeField] private AudioSource musicAudioSource;
+    public void PlaySoundEffect(AudioClip clip)
     {
-        
+        soundEffectsAudioSource.PlayOneShot(clip);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayMusic(AudioClip clip)
     {
-        
+        musicAudioSource.clip = clip;
+        musicAudioSource.Play();
+    }
+
+    public void MuteSound()
+    {
+        if (soundEffectsAudioSource.mute == false)
+            soundEffectsAudioSource.mute = true;
+        else
+            soundEffectsAudioSource.mute = false;
+    }
+
+    public void MuteMusic()
+    {
+        if (musicAudioSource.mute == false)
+            musicAudioSource.mute = true;
+        else
+            musicAudioSource.mute = false;
+    }
+
+    public void SetSoundEffectVolume(float volume)
+    {
+        soundEffectsAudioSource.volume = volume;
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        musicAudioSource.volume = volume;
     }
 }

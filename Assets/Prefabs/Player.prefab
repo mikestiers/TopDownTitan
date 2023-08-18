@@ -133,6 +133,9 @@ MonoBehaviour:
   rb: {fileID: 3529919929195780177}
   weapon: {fileID: 3529919929982014743}
   playerCollider: {fileID: 3529919929195775917}
+  deathSound: {fileID: 8300000, guid: 9c0318ac749a66f42a7488daef00bd2f, type: 3}
+  lives: 0
+  shields: 1
 --- !u!1 &3529919929982014742
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +250,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2894261615961671903, guid: 5eb08ffeb0ceaaf44a9819b2cd6ce95a,
     type: 3}
   firePoint: {fileID: 3529919930592089083}
+  fireSound: {fileID: 8300000, guid: 416d78b4433426f4193b803bac3c7ffb, type: 3}
   fireForce: 2000
   fireRate: 0.1
 --- !u!1 &3529919930592089082
