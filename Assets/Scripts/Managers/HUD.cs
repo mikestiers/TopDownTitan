@@ -13,10 +13,9 @@ public class HUD : Singleton<HUD>
     public Text highScoreText;
     public GridLayoutGroup weaponSelectorGrid;
     public Text shieldText;
-    public Button blasterButton;
-    public Button plasmaCanonButton;
-    public Button lightningArcButton;
-    
+    public GameObject weaponButtonPrefab;
+    private Dictionary<string, WeaponButton> weaponButtons = new Dictionary<string, WeaponButton>();
+
     [Header("Pause Menu")]
     public GameObject pauseMenuCanvas;
     public Button resumeButton;
@@ -45,11 +44,15 @@ public class HUD : Singleton<HUD>
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-
-            gameHudCanvas.SetActive(false);
-            pauseMenuCanvas.SetActive(true);
-            Time.timeScale = 0f;
+            Pause();
         }
+    }
+
+    public void Pause()
+    {
+        gameHudCanvas.SetActive(false);
+        pauseMenuCanvas.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     void Resume()
@@ -103,18 +106,15 @@ public class HUD : Singleton<HUD>
         highScoreText.text = $"High Score\n{score.ToString()}";
     }
 
-    public void AddWeapon(Sprite newWeaponIcon)
+    public void AddWeapon(Weapon newWeaponPrefab, Sprite newWeaponIcon)
     {
-        // Create a new Image component and set its sprite to the new weapon icon
-        Image newImage = new GameObject("WeaponIcon").AddComponent<Image>();
-        newImage.sprite = newWeaponIcon;
+        if (!weaponButtons.ContainsKey(newWeaponPrefab.name))
+        {
+            GameObject newButton = Instantiate(weaponButtonPrefab, weaponSelectorGrid.transform);
+            WeaponButton weaponButton = newButton.GetComponent<WeaponButton>();
+            weaponButton.SetWeapon(newWeaponPrefab, newWeaponIcon);
 
-        // Add the new Image component to the weaponSelectorGrid
-        newImage.transform.SetParent(weaponSelectorGrid.transform, false);
+            weaponButtons.Add(newWeaponPrefab.name, weaponButton);
+        }
     }
-
-    //private bool IsIconPresent(Sprite newWeaponIcon)
-    //{
-    //    return weaponIcons.Any(icon => icon.sprite == newWeaponIcon);
-    //}
 }

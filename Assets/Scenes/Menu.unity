@@ -449,7 +449,7 @@ MonoBehaviour:
   instructionsBackButton: {fileID: 2007018649}
   creditsCanvas: {fileID: 2116179221}
   creditsBackButton: {fileID: 120974955}
-  music: {fileID: 8300000, guid: 5a1a7781a2e27b54f967bc2b4ed747d7, type: 3}
+  music: {fileID: 8300000, guid: 670c0db7ce4beb5498e9b82ce65bf730, type: 3}
 --- !u!1 &641699717
 GameObject:
   m_ObjectHideFlags: 0

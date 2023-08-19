@@ -22,7 +22,6 @@ public class Juggernaut : Enemy
         if (Time.realtimeSinceStartup >= fireCoolDown)
         {
             fireCoolDown = Time.realtimeSinceStartup + fireCoolDown;
-            Debug.Log("Fire");
             weapon.Fire(enemyCollider);
         }
 

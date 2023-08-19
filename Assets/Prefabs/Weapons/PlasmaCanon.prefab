@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 2230194759572624241}
   - component: {fileID: 5761449083190051211}
   - component: {fileID: 7822113795141101046}
-  - component: {fileID: 1534715240243947371}
   - component: {fileID: -3022447784932871846}
   m_Layer: 0
   m_Name: PlasmaCanon
@@ -131,25 +130,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1534715240243947371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8395419203375687846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa69ece7c321d24498cd56f8ac812f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2894261615961671903, guid: 2a564ee4fa5d957499affe18e62f0186,
-    type: 3}
-  firePoint: {fileID: 8347411342919598906}
-  fireSound: {fileID: 8300000, guid: 416d78b4433426f4193b803bac3c7ffb, type: 3}
-  fireForce: 2000
-  fireRate: 0.1
-  nextFireTime: 0
 --- !u!114 &-3022447784932871846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,9 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4de3c2a1464a3a41bdbab4be8d054fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
-  firePoint: {fileID: 0}
-  fireSound: {fileID: 0}
+  bulletPrefab: {fileID: 2894261615961671903, guid: 2a564ee4fa5d957499affe18e62f0186,
+    type: 3}
+  firePoint: {fileID: 8347411342919598906}
+  fireSound: {fileID: 8300000, guid: e5485c0cb35399a46b01dc53158400f7, type: 3}
+  icon: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
   fireForce: 2000
   fireRate: 0.1
-  nextFireTime: 0

@@ -135,7 +135,7 @@ MonoBehaviour:
     type: 3}
   weapon: {fileID: 0}
   playerCollider: {fileID: 3529919929195775917}
-  deathSound: {fileID: 8300000, guid: 9c0318ac749a66f42a7488daef00bd2f, type: 3}
+  deathSound: {fileID: 8300000, guid: a3eaa3da39bba2f4c8d7a90111fe1dd1, type: 3}
 --- !u!1 &3529919929982014742
 GameObject:
   m_ObjectHideFlags: 0

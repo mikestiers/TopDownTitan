@@ -113,11 +113,12 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeWeapon(Weapon newWeaponPrefab, Sprite newWeaponIcon)
     {
+        Debug.Log($"Change Weapon: {newWeaponPrefab} prefab, {newWeaponIcon} icon");
         if (weapon != null)
             Destroy(weapon.gameObject);
 
         weapon = Instantiate(newWeaponPrefab, transform);
 
-        HUD.singleton.AddWeapon(newWeaponIcon);
+        HUD.singleton.AddWeapon(newWeaponPrefab, newWeaponIcon);
     }
 }
