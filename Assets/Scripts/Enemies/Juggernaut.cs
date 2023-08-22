@@ -13,6 +13,8 @@ public class Juggernaut : Enemy
 
     protected override void Start()
     {
+        // Instantiate the starting weapon and set it as the active weapon
+        weapon = Instantiate(weapon, transform);
         base.Start();
         initialPosition = transform.position;
     }

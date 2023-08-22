@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public WeaponPickup droppedWeaponPrefab;
     public float dropChance = 0.25f; // 25% chance of dropping a pickup
     public ParticleSystem destructionEffect;
+    private bool isDead = true;
     public Vector3 downDirection => -transform.up;
 
     public virtual void OnTriggerEnter(Collider other)
@@ -39,21 +40,41 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (health <= 0) return; // while particle effect plays don't take damage
+
         health -= damage;
         if (health <= 0)
         {
+            isDead = true; // Assuming you have an isDead flag to disable movement, etc.
+
+            // Disable the collider
+            Collider enemyCollider = GetComponent<Collider>();
+            if (enemyCollider)
+            {
+                enemyCollider.enabled = false;
+            }
+
+            // Disable movement
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb)
+            {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+
             if (Random.value < dropChance)
             {
                 DropPickup();
             }
+
             if (destructionEffect != null)
             {
                 destructionEffect.Play();
+                Camera.main.GetComponent<CameraShake>().TriggerShake();
+                AudioManager.singleton.PlaySoundEffect(deathSound);
                 StartCoroutine(DestroyAfterEffect(destructionEffect.main.duration));
             }
-            DestroyEnemy();
-            Camera.main.GetComponent<CameraShake>().TriggerShake();
-            AudioManager.singleton.PlaySoundEffect(deathSound);
+            //DestroyEnemy();
         }
     }
 
@@ -73,15 +94,4 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    //void Update()
-    //{
-    //    if (Time.realtimeSinceStartup >= fireCoolDown)
-    //    {
-    //        fireCoolDown = Time.realtimeSinceStartup + fireCoolDown;
-    //        weapon.Fire(enemyCollider);
-    //    }
-
-    //    transform.Translate(moveSpeed * Time.deltaTime * downDirection);
-    //}
 }

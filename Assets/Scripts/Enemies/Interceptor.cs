@@ -12,6 +12,13 @@ public class Interceptor : Enemy
 
     private bool isAvoiding = false;
 
+    protected override void Start()
+    {
+        // Instantiate the starting weapon and set it as the active weapon
+        weapon = Instantiate(weapon, transform);
+        base.Start();
+    }
+
     void Update()
     {
         if (Time.realtimeSinceStartup >= fireCoolDown)

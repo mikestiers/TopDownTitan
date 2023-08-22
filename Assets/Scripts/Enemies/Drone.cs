@@ -8,7 +8,9 @@ public class Drone : Enemy
     {
         // Instantiate the starting weapon and set it as the active weapon
         weapon = Instantiate(weapon, transform);
+        base.Start();
     }
+
     void Update()
     {
         if (Time.realtimeSinceStartup >= fireCoolDown)

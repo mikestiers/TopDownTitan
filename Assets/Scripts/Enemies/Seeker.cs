@@ -6,7 +6,13 @@ public class Seeker : Enemy
 {
     Vector3 directionToPlayer;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        // Instantiate the starting weapon and set it as the active weapon
+        weapon = Instantiate(weapon, transform);
+        base.Start();
+    }
+
     void Update()
     {
         if (Time.realtimeSinceStartup >= fireCoolDown)

@@ -18,6 +18,8 @@ public class Gunner : Enemy
 
     protected override void Start()
     {
+        // Instantiate the starting weapon and set it as the active weapon
+        weapon = Instantiate(weapon, transform);
         int randomDirection = Random.Range(0, 2);
         hitWall = randomDirection == 1;
         base.Start();

@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float damageAmount = 20.0f;
     public int scoreValue = 100;
+    public GameObject shooter; // The entity that shot this bullet
 
     public void OnTriggerEnter(Collider other)
     {
