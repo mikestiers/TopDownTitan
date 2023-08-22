@@ -14,7 +14,9 @@ public class HUD : Singleton<HUD>
     public GridLayoutGroup weaponSelectorGrid;
     public Text shieldText;
     public GameObject weaponButtonPrefab;
+    public Button pauseButton;
     private Dictionary<string, WeaponButton> weaponButtons = new Dictionary<string, WeaponButton>();
+    private WeaponButton activeWeapon;
 
     [Header("Pause Menu")]
     public GameObject pauseMenuCanvas;
@@ -22,22 +24,27 @@ public class HUD : Singleton<HUD>
     public Button quitButton;
     public Button musicOnOffButton;
     public Slider musicVolumeSlider;
-    public Button soundOnOffbutton;
+    public Button soundOnOffButton;
     public Slider soundVolumeSlider;
 
     [Header("Game Over Menu")]
     public GameObject gameOverMenuCanvas;
     public Button restartButton;
 
+    private float lastMusicVolume = 0.25f;
+    private float lastSoundVolume = 0.25f;
+
     void Start()
     {
+        pauseButton.onClick.AddListener(Pause);
         resumeButton.onClick.AddListener(Resume);
         quitButton.onClick.AddListener(Quit);
         musicOnOffButton.onClick.AddListener(MuteMusic);
         musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
-        soundOnOffbutton.onClick.AddListener(MuteSound);
+        soundOnOffButton.onClick.AddListener(MuteSound);
         soundVolumeSlider.onValueChanged.AddListener(SetSoundVolume);
         restartButton.onClick.AddListener(Quit);
+        UpdateShields(GameManager.singleton.shields);
     }
 
     private void Update()
@@ -64,19 +71,54 @@ public class HUD : Singleton<HUD>
 
     void Quit()
     {
-        HUD.singleton.gameOverMenuCanvas.SetActive(false);
+        Destroy(gameObject);
+        Destroy(GameManager.singleton.gameObject);
+        AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource audio in allAudioSources)
+        {
+            audio.Stop();
+        }
         SceneManager.UnloadSceneAsync("Game");
         SceneManager.LoadScene("Menu");
     }
 
     void MuteMusic()
     {
-        AudioManager.singleton.SetMusicVolume(musicVolumeSlider.value);
+        // Find the child object's Text component
+        Text childText = musicOnOffButton.transform.Find("Text").GetComponent<Text>();
+
+        if (musicVolumeSlider.value > 0) // If the current volume is greater than 0, mute it
+        {
+            lastMusicVolume = musicVolumeSlider.value; // Store the current volume before muting
+            musicVolumeSlider.value = 0;
+            AudioManager.singleton.SetMusicVolume(0);
+            childText.text = "Unmute Music"; // Update the text to indicate the music is muted
+        }
+        else // If the current volume is 0, restore to the last known volume
+        {
+            musicVolumeSlider.value = lastMusicVolume;
+            AudioManager.singleton.SetMusicVolume(lastMusicVolume);
+            childText.text = "Mute Music"; // Update the text to indicate the music is playing
+        }
     }
 
     void MuteSound()
     {
-        AudioManager.singleton.SetSoundEffectVolume(soundVolumeSlider.value);
+        Text childText = soundOnOffButton.transform.Find("Text").GetComponent<Text>();
+
+        if (soundVolumeSlider.value > 0) // If the current volume is greater than 0, mute it
+        {
+            lastSoundVolume = soundVolumeSlider.value; // Store the current volume before muting
+            soundVolumeSlider.value = 0;
+            AudioManager.singleton.SetSoundEffectVolume(0);
+            childText.text = "Unmute Sound"; // Update the text to indicate the music is muted
+        }
+        else // If the current volume is 0, restore to the last known volume
+        {
+            soundVolumeSlider.value = lastSoundVolume;
+            AudioManager.singleton.SetSoundEffectVolume(lastSoundVolume);
+            childText.text = "Mute Sound"; // Update the text to indicate the music is playing
+        }
     }
 
     void SetMusicVolume(float volume)
@@ -116,5 +158,25 @@ public class HUD : Singleton<HUD>
 
             weaponButtons.Add(newWeaponPrefab.name, weaponButton);
         }
+        else
+        {
+            // If the weapon already exists, set it as the active one
+            SetActiveIcon(weaponButtons[newWeaponPrefab.name]);
+        }
+
+    }
+
+    public void SetActiveIcon(WeaponButton newActiveIcon)
+    {
+        // Reset active icon to unselected colors
+        if (activeWeapon != null)
+        {
+            activeWeapon.iconImage.color = Color.white; // Use iconImage instead of buttonPrefab
+        }
+
+        // Set the new active icon and update the color
+        activeWeapon = newActiveIcon;
+        activeWeapon.iconImage.color = Color.green;
+
     }
 }

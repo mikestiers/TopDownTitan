@@ -23,6 +23,20 @@ public class GameManager : Singleton<GameManager>
         //HUD.singleton.UpdateScore(0);
         //GameManager.singleton.shields = 1;
         //HUD.singleton.UpdateShields(GameManager.singleton.shields);
+
+        // Use PlayerPrefs for high score
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            highScore = PlayerPrefs.GetInt("HighScore");
+            HUD.singleton.UpdateHighScore(highScore);
+        }
+        else
+            highScore = 0;
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.Save(); // just in case
     }
 
     public void IncreaseScore(int amount)
@@ -46,6 +60,8 @@ public class GameManager : Singleton<GameManager>
         if (score > highScore)
         {
             highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
             return true;
         }
         else

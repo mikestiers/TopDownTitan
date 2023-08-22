@@ -2,38 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class WeaponButton : MonoBehaviour
+public class WeaponButton : MonoBehaviour, IPointerClickHandler // Implement IPointerClickHandler
 {
     public Image weaponIcon;
-    public Button buttonPrefab;
+    public Image iconImage;
+    public Text weaponIconText;
     public Weapon weaponPrefab;
 
     public void SetWeapon(Weapon prefab, Sprite icon)
     {
         weaponIcon.sprite = icon;
         weaponPrefab = prefab;
-        buttonPrefab.name = prefab.name;
-
-        // Set up the button click event
-        buttonPrefab.onClick.AddListener(OnButtonClick);
-
-        // Get the Text component of the button and set its text property
-        Text buttonText = buttonPrefab.GetComponentInChildren<Text>();
-        if (buttonText != null)
-        {
-            buttonText.text = prefab.name;
-        }
+        iconImage.name = prefab.name;
+        weaponIconText.text = prefab.name;
     }
 
-    public void OnButtonClick()
+    public void OnPointerClick(PointerEventData eventData) // Using a button UI object didn't colors properly
     {
-        Debug.Log($"Weapon Button Clicked: {buttonPrefab}");
-        ColorBlock colorBlock = buttonPrefab.colors;
-        colorBlock.pressedColor = Color.green;
-        colorBlock.normalColor = Color.green;
-        buttonPrefab.colors = colorBlock;
+        Debug.Log($"Weapon Icon Clicked: {iconImage}");
         PlayerController playerController = FindObjectOfType<PlayerController>();
         playerController.ChangeWeapon(weaponPrefab, weaponIcon.sprite);
+
+        // Set the icon in the HUD to active
+        HUD.singleton.SetActiveIcon(this);
     }
 }

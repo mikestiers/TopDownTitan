@@ -17,8 +17,16 @@ public class WeaponPickup : MonoBehaviour
             // Check if the player controller exists
             if (playerController != null)
             {
-                // Change the active weapon
-                playerController.ChangeWeapon(newWeaponPrefab, newWeaponIcon);
+                if (tag == "PickupWeapon")
+                {
+                    // Change the active weapon
+                    playerController.ChangeWeapon(newWeaponPrefab, newWeaponIcon);
+                }
+
+                if (tag == "PickupShield")
+                {
+                    playerController.AddShield(1);
+                }
 
                 // Destroy the weapon pickup
                 Destroy(gameObject);

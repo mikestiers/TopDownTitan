@@ -222,6 +222,9 @@ MonoBehaviour:
   weapon: {fileID: -3022447784932871846, guid: 6b802d63b930918419865f7d4b06cff7, type: 3}
   enemyCollider: {fileID: 8710472836988810374}
   playerTransform: {fileID: 0}
+  droppedWeaponPrefab: {fileID: 4197017333185547307, guid: 277787374160d244f87c6c498eb039c0,
+    type: 3}
+  dropChance: 0.25
   hoverRange: 5
   hoverSpeed: 1
   moveRange: 2

@@ -43,10 +43,10 @@ GameObject:
   - component: {fileID: 2230194759572624241}
   - component: {fileID: 5761449083190051211}
   - component: {fileID: 7822113795141101046}
-  - component: {fileID: 34685147757448322}
+  - component: {fileID: 1534715240243947371}
   m_Layer: 0
-  m_Name: PlasmaCanon
-  m_TagString: PickupWeapon
+  m_Name: Shield
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 8395419203375687846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.604, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8347411342919598906}
@@ -74,7 +74,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8395419203375687846}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &5761449083190051211
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &34685147757448322
+--- !u!114 &1534715240243947371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,9 +139,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8395419203375687846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87da6da76d78ba34b8443d2a4e82ffdd, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fa69ece7c321d24498cd56f8ac812f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newWeaponPrefab: {fileID: -3022447784932871846, guid: 6b802d63b930918419865f7d4b06cff7,
+  bulletPrefab: {fileID: 2894261615961671903, guid: 5eb08ffeb0ceaaf44a9819b2cd6ce95a,
     type: 3}
-  newWeaponIcon: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
+  firePoint: {fileID: 8347411342919598906}
+  fireSound: {fileID: 8300000, guid: 8b33bd914d3eaa646870622279b5d649, type: 3}
+  icon: {fileID: 21300000, guid: 5b56d9fa0e8bd6e409ed188db38a692c, type: 3}
+  fireForce: 2000
+  fireRate: 0.1

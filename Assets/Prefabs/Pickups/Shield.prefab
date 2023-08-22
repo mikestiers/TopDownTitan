@@ -43,10 +43,10 @@ GameObject:
   - component: {fileID: 2230194759572624241}
   - component: {fileID: 5761449083190051211}
   - component: {fileID: 7822113795141101046}
-  - component: {fileID: 34685147757448322}
+  - component: {fileID: 4197017333185547307}
   m_Layer: 0
-  m_Name: PlasmaCanon
-  m_TagString: PickupWeapon
+  m_Name: Shield
+  m_TagString: PickupShield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 51927e96cfc882b40be84d43f4bdfb61, type: 2}
+  - {fileID: 2100000, guid: 4ebfab4823becc3489392583e939bbd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,7 +130,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &34685147757448322
+--- !u!114 &4197017333185547307
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,6 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87da6da76d78ba34b8443d2a4e82ffdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newWeaponPrefab: {fileID: -3022447784932871846, guid: 6b802d63b930918419865f7d4b06cff7,
+  newWeaponPrefab: {fileID: 1534715240243947371, guid: df19ecf04bf716f4fbd8ac4ae872a0e0,
     type: 3}
-  newWeaponIcon: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
+  newWeaponIcon: {fileID: 21300000, guid: 5b56d9fa0e8bd6e409ed188db38a692c, type: 3}

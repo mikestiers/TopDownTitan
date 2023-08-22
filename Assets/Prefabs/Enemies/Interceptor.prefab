@@ -217,11 +217,14 @@ MonoBehaviour:
   enemyType: 
   attackPattern: 
   moveSpeed: 5
-  health: 0
+  health: 40
   deathSound: {fileID: 8300000, guid: b820397fa9117ca4eb1007089cd4a75c, type: 3}
   weapon: {fileID: 1534715240243947371, guid: 092b3fd456feeb34dac5bb62dd908698, type: 3}
   enemyCollider: {fileID: 8710472836988810374}
   playerTransform: {fileID: 0}
+  droppedWeaponPrefab: {fileID: 4197017333185547307, guid: d2d761f826f4d8e4c83c42a79e84325f,
+    type: 3}
+  dropChance: 0.25
   avoidanceSpeed: 20
   avoidanceDistance: 20
   bulletLayer:

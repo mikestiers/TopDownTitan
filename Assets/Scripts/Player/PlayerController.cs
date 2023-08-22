@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         // Instantiate the starting weapon and set it as the active weapon
         weapon = Instantiate(startingWeaponPrefab, transform);
+        HUD.singleton.AddWeapon(startingWeaponPrefab, startingWeaponPrefab.icon);
     }
 
     void Update()
@@ -120,5 +121,13 @@ public class PlayerController : MonoBehaviour
         weapon = Instantiate(newWeaponPrefab, transform);
 
         HUD.singleton.AddWeapon(newWeaponPrefab, newWeaponIcon);
+    }
+
+    public void AddShield(int shields)
+    {
+        Debug.Log($"Shield Pickup");
+        if (weapon != null)
+            shields = GameManager.singleton.shields + shields;
+            HUD.singleton.UpdateShields(shields);
     }
 }

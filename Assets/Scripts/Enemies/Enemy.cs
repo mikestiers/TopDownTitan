@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
     public Weapon weapon;
     public CapsuleCollider enemyCollider;
     public Transform playerTransform;
+    public WeaponPickup droppedWeaponPrefab;
+    public float dropChance = 0.25f; // 25% chance of dropping a pickup
+    public ParticleSystem destructionEffect;
     public Vector3 downDirection => -transform.up;
 
     public virtual void OnTriggerEnter(Collider other)
@@ -39,9 +42,31 @@ public class Enemy : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            if (Random.value < dropChance)
+            {
+                DropPickup();
+            }
+            if (destructionEffect != null)
+            {
+                destructionEffect.Play();
+                StartCoroutine(DestroyAfterEffect(destructionEffect.main.duration));
+            }
             DestroyEnemy();
+            Camera.main.GetComponent<CameraShake>().TriggerShake();
             AudioManager.singleton.PlaySoundEffect(deathSound);
         }
+    }
+
+    IEnumerator DestroyAfterEffect(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        DestroyEnemy();
+    }
+
+
+    void DropPickup()
+    {
+        Instantiate(droppedWeaponPrefab, transform.position, Quaternion.identity);
     }
 
     void DestroyEnemy()
