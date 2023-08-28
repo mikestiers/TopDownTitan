@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,23 +9,40 @@ public class WeaponButton : MonoBehaviour, IPointerClickHandler // Implement IPo
     public Image weaponIcon;
     public Image iconImage;
     public Text weaponIconText;
-    public Weapon weaponPrefab;
 
-    public void SetWeapon(Weapon prefab, Sprite icon)
+    public Weapon weapon;
+    private int weaponIndex;
+    private PlayerController player;
+
+    private void Awake()
     {
-        weaponIcon.sprite = icon;
-        weaponPrefab = prefab;
-        iconImage.name = prefab.name;
-        weaponIconText.text = prefab.name;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
+
+    public void Initialize(Weapon weapon, int index)
+    {
+        this.weapon = weapon;
+        weaponIndex = index;
+    }
+
+    private void Update()
+    {
+        if (weapon != null)
+        {
+            if (weaponIndex == 0)
+                weaponIconText.text = "∞";
+            else
+                weaponIconText.text = weapon.currentBullets.ToString();
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData) // Using a button UI object didn't colors properly
     {
-        Debug.Log($"Weapon Icon Clicked: {iconImage}");
-        PlayerController playerController = FindObjectOfType<PlayerController>();
-        playerController.ChangeWeapon(weaponPrefab, weaponIcon.sprite);
+        player.inventory.EquipWeapon(weaponIndex);
+    }
 
-        // Set the icon in the HUD to active
-        HUD.singleton.SetActiveIcon(this);
+    public void Remove()
+    {
+        Destroy(gameObject);
     }
 }

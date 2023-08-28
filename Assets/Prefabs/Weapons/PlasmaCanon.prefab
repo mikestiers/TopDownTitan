@@ -142,10 +142,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4de3c2a1464a3a41bdbab4be8d054fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponId: 1
   bulletPrefab: {fileID: 2894261615961671903, guid: 2a564ee4fa5d957499affe18e62f0186,
     type: 3}
   firePoint: {fileID: 8347411342919598906}
   fireSound: {fileID: 8300000, guid: e5485c0cb35399a46b01dc53158400f7, type: 3}
   icon: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
+  color: {r: 1, g: 0, b: 0.8064976, a: 1}
   fireForce: 2000
   fireRate: 0.1
+  currentBullets: 100

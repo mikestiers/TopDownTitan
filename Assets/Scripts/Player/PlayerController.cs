@@ -7,19 +7,11 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 7.5f;
     public float touchMoveSpeed = 15f;
     public Rigidbody rb;
-    public Weapon startingWeaponPrefab;
-    public Weapon weapon;
     public BoxCollider playerCollider;
     public AudioClip deathSound;
+    public WeaponInventory inventory;
     private Vector3 targetPosition;
     Vector3 moveDirection;
-
-    private void Start()
-    {
-        // Instantiate the starting weapon and set it as the active weapon
-        weapon = Instantiate(startingWeaponPrefab, transform);
-        HUD.singleton.AddWeapon(startingWeaponPrefab, startingWeaponPrefab.icon);
-    }
 
     void Update()
     {
@@ -28,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            weapon.Fire(playerCollider);
+            inventory.currentWeapon.Fire(playerCollider);
         }
 
         moveDirection = new Vector3(moveX, moveY, 0).normalized;
@@ -66,7 +58,7 @@ public class PlayerController : MonoBehaviour
                         {
                             case TouchPhase.Began:
                                 // Fire the weapon when the touch starts
-                                weapon.Fire(playerCollider);
+                                inventory.currentWeapon.Fire(playerCollider);
                                 break;
 
                             case TouchPhase.Moved:
@@ -76,12 +68,12 @@ public class PlayerController : MonoBehaviour
                                 transform.position = targetPosition;
 
                                 // Fire the weapon when the touch moves
-                                weapon.Fire(playerCollider);
+                                inventory.currentWeapon.Fire(playerCollider);
                                 break;
 
                             case TouchPhase.Stationary:
                                 // Fire the weapon when the touch does not move
-                                weapon.Fire(playerCollider);
+                                inventory.currentWeapon.Fire(playerCollider);
 
                                 break;
                         }
@@ -112,22 +104,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ChangeWeapon(Weapon newWeaponPrefab, Sprite newWeaponIcon)
-    {
-        Debug.Log($"Change Weapon: {newWeaponPrefab} prefab, {newWeaponIcon} icon");
-        if (weapon != null)
-            Destroy(weapon.gameObject);
-
-        weapon = Instantiate(newWeaponPrefab, transform);
-
-        HUD.singleton.AddWeapon(newWeaponPrefab, newWeaponIcon);
-    }
 
     public void AddShield(int shields)
     {
         Debug.Log($"Shield Pickup");
-        if (weapon != null)
-            shields = GameManager.singleton.shields + shields;
-            HUD.singleton.UpdateShields(shields);
+        shields = GameManager.singleton.shields + shields;
+        HUD.singleton.UpdateShields(shields);
     }
 }

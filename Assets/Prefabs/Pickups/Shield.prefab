@@ -142,6 +142,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87da6da76d78ba34b8443d2a4e82ffdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newWeaponPrefab: {fileID: 1534715240243947371, guid: df19ecf04bf716f4fbd8ac4ae872a0e0,
-    type: 3}
-  newWeaponIcon: {fileID: 21300000, guid: 5b56d9fa0e8bd6e409ed188db38a692c, type: 3}
+  weapon: {fileID: 0}
+  ammo: 1
