@@ -35,9 +35,12 @@ public class PlayerController : MonoBehaviour
                 Touch touch = Input.GetTouch(i);
 
                 // Convert the touch position to world coordinates
-                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                touchPosition.z = Camera.main.nearClipPlane;
-                //touchPosition.z = 0; // Set z-axis to 0 to prevent movement in the z-axis
+                //Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                //touchPosition.z = Camera.main.nearClipPlane;
+                Vector3 touchPosScreen = touch.position;
+                touchPosScreen.z = Vector3.Distance(Camera.main.transform.position, transform.position);
+                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touchPosScreen);
+
 
                 // Cast a ray from the camera to the touch position
                 // because I used 3D instead of 2D, otherwise collider2d has an overlappoint method
@@ -48,8 +51,6 @@ public class PlayerController : MonoBehaviour
                 float sphereRadius = 1.0f; // Radius of the sphere
                 if (Physics.SphereCast(ray, sphereRadius, out hit, raycastDistance))
                 {
-                //    if (Physics.Raycast(ray, out hit, 1000f)) // remove 1000f probably
-                //{
                     // Check if the ray hit the player's collider
                     if (hit.collider.gameObject == gameObject)
                     {
@@ -103,7 +104,6 @@ public class PlayerController : MonoBehaviour
             HUD.singleton.gameOverMenuCanvas.SetActive(true);
         }
     }
-
 
     public void AddShield(int shields)
     {
