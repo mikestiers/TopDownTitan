@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlasmaCanon : Weapon
 {
-    private int currentBullets = 100;
     public override void Fire(Collider shooter)
     {
         if (currentBullets > 0)
@@ -20,6 +19,10 @@ public class PlasmaCanon : Weapon
                 nextFireTime = Time.time + fireRate;
                 currentBullets--;
             }
+        }
+        else
+        {
+            WeaponInventory.singleton.RemoveWeapon(this.weaponId);
         }
     }
 }

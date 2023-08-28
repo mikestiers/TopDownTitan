@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour
 {
-    public Weapon newWeaponPrefab; // Assign the new weapon prefab in the Inspector
-    public Sprite newWeaponIcon; // Assign an icon for the HUD
+    public Weapon weapon;
+
+    private void Awake()
+    {
+        //GetComponent<MeshRenderer>().material.color = newWeaponPrefab.color;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,8 +23,8 @@ public class WeaponPickup : MonoBehaviour
             {
                 if (tag == "PickupWeapon")
                 {
-                    // Change the active weapon
-                    playerController.ChangeWeapon(newWeaponPrefab, newWeaponIcon);
+                    // Change the active weapon and add it to inventory
+                    playerController.inventory.AddWeapon(weapon);
                 }
 
                 if (tag == "PickupShield")

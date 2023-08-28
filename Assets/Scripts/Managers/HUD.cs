@@ -11,12 +11,10 @@ public class HUD : Singleton<HUD>
     public Text livesText;
     public Text scoreText;
     public Text highScoreText;
-    public GridLayoutGroup weaponSelectorGrid;
+    public Transform weaponSelectorGrid;
     public Text shieldText;
     public GameObject weaponButtonPrefab;
     public Button pauseButton;
-    private Dictionary<string, WeaponButton> weaponButtons = new Dictionary<string, WeaponButton>();
-    private WeaponButton activeWeapon;
 
     [Header("Pause Menu")]
     public GameObject pauseMenuCanvas;
@@ -33,6 +31,7 @@ public class HUD : Singleton<HUD>
 
     private float lastMusicVolume = 0.25f;
     private float lastSoundVolume = 0.25f;
+    private List<WeaponButton> weaponButtons = new List<WeaponButton>();
 
     void Start()
     {
@@ -148,35 +147,28 @@ public class HUD : Singleton<HUD>
         highScoreText.text = $"High Score\n{score.ToString()}";
     }
 
-    public void AddWeapon(Weapon newWeaponPrefab, Sprite newWeaponIcon)
+    public void CreateWeaponButton(Weapon weapon, int index)
     {
-        if (!weaponButtons.ContainsKey(newWeaponPrefab.name))
-        {
-            GameObject newButton = Instantiate(weaponButtonPrefab, weaponSelectorGrid.transform);
-            WeaponButton weaponButton = newButton.GetComponent<WeaponButton>();
-            weaponButton.SetWeapon(newWeaponPrefab, newWeaponIcon);
-
-            weaponButtons.Add(newWeaponPrefab.name, weaponButton);
-        }
-        else
-        {
-            // If the weapon already exists, set it as the active one
-            SetActiveIcon(weaponButtons[newWeaponPrefab.name]);
-        }
-
+        WeaponButton button = Instantiate(weaponButtonPrefab, weaponSelectorGrid).GetComponent<WeaponButton>();
+        button.Initialize(weapon, index);
+        weaponButtons.Add(button);
     }
 
-    public void SetActiveIcon(WeaponButton newActiveIcon)
+    public void RemoveWeaponButton(Weapon weapon, int index)
     {
-        // Reset active icon to unselected colors
-        if (activeWeapon != null)
+        WeaponButton button = weaponButtons[index];
+        weaponButtons.Remove(button); // only weapon of the script gets removed
+        button.Remove();
+        // weaponButtons.RemoveAt(index);
+        // Destroy(button); // Destroys the script attached
+    }
+
+    public void OnSelectWeaponIndex(int index)
+    {
+        for (int i = 0; i < weaponButtons.Count; i++)
         {
-            activeWeapon.iconImage.color = Color.white; // Use iconImage instead of buttonPrefab
+            weaponButtons[i].iconImage.color = Color.white;
         }
-
-        // Set the new active icon and update the color
-        activeWeapon = newActiveIcon;
-        activeWeapon.iconImage.color = Color.green;
-
+        weaponButtons[index].iconImage.color = weaponButtons[index].weapon.color;
     }
 }
