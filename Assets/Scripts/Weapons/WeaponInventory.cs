@@ -32,7 +32,7 @@ public class WeaponInventory : Singleton<WeaponInventory>
         }
         else
         {
-            AddAmmo(weapon.weaponId);
+            AddAmmo(weapon.weaponId, weapon.currentBullets);
         }
     }
 
@@ -63,8 +63,13 @@ public class WeaponInventory : Singleton<WeaponInventory>
         return weapons[index];
     }
 
-    public void AddAmmo(int index)
+    public void AddAmmo(int weaponId, int ammoPickup)
     {
-
+        Weapon[] currentWeapons = player.GetComponentsInChildren<Weapon>();
+        foreach (Weapon weapon in currentWeapons)
+        {
+            if (weapon.weaponId == weaponId)
+                weapon.currentBullets += ammoPickup;
+        }
     }
 }

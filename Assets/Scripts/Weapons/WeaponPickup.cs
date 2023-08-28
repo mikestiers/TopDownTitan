@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeaponPickup : MonoBehaviour
 {
     public Weapon weapon;
+    public int ammo;
 
     private void Awake()
     {

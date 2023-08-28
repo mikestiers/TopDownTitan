@@ -13,11 +13,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 targetPosition;
     Vector3 moveDirection;
 
-    private void Start()
-    {
-
-    }
-
     void Update()
     {
         float moveX = Input.GetAxisRaw("Horizontal");

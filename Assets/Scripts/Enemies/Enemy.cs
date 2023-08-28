@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
         {
             PlayerController player = other.GetComponent<PlayerController>();
             player.TakeDamage(1);
+            TakeDamage(100);
         }
     }
 
