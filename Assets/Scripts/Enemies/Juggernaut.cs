@@ -15,7 +15,7 @@ public class Juggernaut : Enemy
         // Instantiate the starting weapon and set it as the active weapon
         weapon = Instantiate(weapon, transform);
         base.Start();
-        initialPosition = new Vector3(transform.position.x, transform.position.y - hoverRange * 5, 0);
+        initialPosition = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
     void Update()

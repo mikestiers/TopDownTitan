@@ -11,6 +11,8 @@ public class HUD : Singleton<HUD>
     public Text livesText;
     public Text scoreText;
     public Text highScoreText;
+    public GameObject waveCanvas;
+    public Text waveText;
     public Transform weaponSelectorGrid;
     public Text shieldText;
     public GameObject weaponButtonPrefab;

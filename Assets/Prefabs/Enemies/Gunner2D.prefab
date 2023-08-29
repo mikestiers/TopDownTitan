@@ -154,7 +154,7 @@ MonoBehaviour:
   attackPattern: 0
   moveSpeed: 10
   health: 40
-  deathSound: {fileID: 8300000, guid: 4f2f173ae5163a04cb8344b9b8fd7799, type: 3}
+  deathSound: {fileID: 8300000, guid: 6edee9b404ff68d48aca8230071ec486, type: 3}
   weapon: {fileID: 1534715240243947371, guid: 092b3fd456feeb34dac5bb62dd908698, type: 3}
   enemyCollider: {fileID: 3436862222930844600}
   playerTransform: {fileID: 0}

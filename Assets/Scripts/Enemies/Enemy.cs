@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public static int enemyCount = 0;
     public float fireCoolDown = 2.0f;
     public string enemyType;
     public AttackPattern attackPattern = AttackPattern.Default;
@@ -18,6 +19,16 @@ public class Enemy : MonoBehaviour
     public ParticleSystem destructionEffect;
     private bool isDead = true;
     public Vector3 downDirection => Vector3.up;
+
+    private void OnEnable()
+    {
+        enemyCount++;
+    }
+
+    private void OnDisable()
+    {
+        enemyCount--;
+    }
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {

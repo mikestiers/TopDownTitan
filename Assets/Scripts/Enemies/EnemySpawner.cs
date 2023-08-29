@@ -14,7 +14,6 @@ public class EnemySpawner : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Time.time >= nextSpawnTime)
@@ -80,6 +79,4 @@ public class EnemySpawner : MonoBehaviour
             enemy.transform.SetParent(pivot.transform);
         }
     }
-
-
 }
