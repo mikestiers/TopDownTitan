@@ -9,7 +9,6 @@ public class Juggernaut : Enemy
     public float hoverRange = 0.25f; // Range of vertical hover motion
     public float hoverSpeed = 0.25f; // Speed of vertical hover motion
     public float moveRange = 2.0f;  // Range of horizontal movement
-    //public float moveSpeed = 2.0f;  // Speed of horizontal movement
 
     protected override void Start()
     {

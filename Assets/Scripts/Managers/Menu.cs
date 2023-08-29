@@ -11,6 +11,10 @@ public class Menu : MonoBehaviour
     public Button playButton;
     public Button instructionsButton;
     public Button creditsButton;
+    public GameObject mainMenuCharacter;
+    private float hoverRange = 0.5f;
+    private float hoverSpeed = 1.0f;
+    private Vector3 initialPosition;
 
     [Header("Instructions Menu")]
     public GameObject instructionsCanvas;
@@ -33,12 +37,21 @@ public class Menu : MonoBehaviour
         AudioManager.singleton.PlayMusic(music);
         AudioManager.singleton.SetMusicVolume(25.0f);
         AudioManager.singleton.SetSoundEffectVolume(25.0f);
+        initialPosition = mainMenuCharacter.transform.position;
+    }
+
+    private void Update()
+    {
+        // Move the character on the main screen around a bit
+        float newYPosition = initialPosition.y + Mathf.Sin(Time.time * hoverSpeed) * hoverRange;
+        mainMenuCharacter.transform.position = new Vector3(initialPosition.x, newYPosition, initialPosition.z);
     }
 
     void Play()
     {
-        SceneManager.LoadScene("Game");
-        Time.timeScale = 1f;
+        // ScreenFlash.cs is called
+        //SceneManager.LoadScene("Game");
+        //Time.timeScale = 1f;
     }
 
     void InstructionsMenu()

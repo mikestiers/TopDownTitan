@@ -16,6 +16,7 @@ public class Background : MonoBehaviour
         // Randomly select a sprite from the list
         int randomIndex = Random.Range(0, backgroundItems.Count);
         selectedSprite = backgroundItems[randomIndex];
+
         // Create a new GameObject
         backgroundSprite = new GameObject("BackgroundSprite");
 
@@ -27,7 +28,7 @@ public class Background : MonoBehaviour
         backgroundSprite.transform.SetParent(transform);
 
         // Optionally, set the position, rotation, scale of the new GameObject as needed
-        backgroundSprite.transform.localPosition = Vector3.zero; // For example, set it to the center of the parent
+        backgroundSprite.transform.localPosition = Vector3.zero;
     }
 
     void Update()

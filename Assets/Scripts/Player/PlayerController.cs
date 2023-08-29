@@ -37,17 +37,12 @@ public class PlayerController : MonoBehaviour
                 // Convert the touch position to world coordinates
                 Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
                 touchPosition.z = Camera.main.nearClipPlane;
-                //touchPosition.z = 0; // Set z-axis to 0 to prevent movement in the z-axis
 
                 // Cast a ray from the camera to the touch position
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero);
 
-                float raycastDistance = 100f; // Maximum raycast distance
-                float sphereRadius = 1.0f; // Radius of the sphere
-                if (hit.collider.gameObject == gameObject)
+                if (hit.collider != null && hit.collider.gameObject == gameObject)
                 {
-                //    if (Physics.Raycast(ray, out hit, 1000f)) // remove 1000f probably
-                //{
                     // Check if the ray hit the player's collider
                     if (hit.collider.gameObject == gameObject)
                     {
@@ -101,7 +96,6 @@ public class PlayerController : MonoBehaviour
             HUD.singleton.gameOverMenuCanvas.SetActive(true);
         }
     }
-
 
     public void AddShield(int shields)
     {

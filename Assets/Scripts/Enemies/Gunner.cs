@@ -56,5 +56,4 @@ public class Gunner : Enemy
         // Move the GameObject diagonally at a constant speed
         transform.Translate(moveSpeed * Time.deltaTime * moveDirection);
     }
-
 }
