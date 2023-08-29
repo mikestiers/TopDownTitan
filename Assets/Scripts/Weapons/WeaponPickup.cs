@@ -12,7 +12,7 @@ public class WeaponPickup : MonoBehaviour
         //GetComponent<MeshRenderer>().material.color = newWeaponPrefab.color;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -25,6 +25,7 @@ public class WeaponPickup : MonoBehaviour
                 if (tag == "PickupWeapon")
                 {
                     // Change the active weapon and add it to inventory
+                    Debug.Log("Pickup");
                     playerController.inventory.AddWeapon(weapon);
                 }
 

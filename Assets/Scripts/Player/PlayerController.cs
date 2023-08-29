@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 7.5f;
     public float touchMoveSpeed = 15f;
-    public Rigidbody rb;
-    public BoxCollider playerCollider;
+    public Rigidbody2D rb;
+    public CircleCollider2D playerCollider;
     public AudioClip deathSound;
     public WeaponInventory inventory;
     private Vector3 targetPosition;
@@ -40,13 +40,11 @@ public class PlayerController : MonoBehaviour
                 //touchPosition.z = 0; // Set z-axis to 0 to prevent movement in the z-axis
 
                 // Cast a ray from the camera to the touch position
-                // because I used 3D instead of 2D, otherwise collider2d has an overlappoint method
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero);
 
                 float raycastDistance = 100f; // Maximum raycast distance
                 float sphereRadius = 1.0f; // Radius of the sphere
-                if (Physics.SphereCast(ray, sphereRadius, out hit, raycastDistance))
+                if (hit.collider.gameObject == gameObject)
                 {
                 //    if (Physics.Raycast(ray, out hit, 1000f)) // remove 1000f probably
                 //{

@@ -33,14 +33,21 @@ public class Gunner : Enemy
             weapon.Fire(enemyCollider);
         }
 
+        // Check for screen boundaries
+        Vector3 screenPos = Camera.main.WorldToViewportPoint(transform.position);
+        if (screenPos.x > 1 || screenPos.x < 0)
+        {
+            hitWall = !hitWall;
+        }
+
         // Calculate the diagonal movement direction
         if (hitWall)
         {
-            diagonalDirection = -Vector3.right + downDirection;
+            diagonalDirection = transform.up + (-transform.right);
         }
         else
         {
-            diagonalDirection = Vector3.right + downDirection;
+            diagonalDirection = transform.up + (transform.right);
         }
 
         // Normalize the direction to maintain a consistent movement speed
@@ -49,4 +56,5 @@ public class Gunner : Enemy
         // Move the GameObject diagonally at a constant speed
         transform.Translate(moveSpeed * Time.deltaTime * moveDirection);
     }
+
 }

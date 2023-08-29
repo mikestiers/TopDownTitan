@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public int scoreValue = 100;
     public GameObject shooter; // The entity that shot this bullet
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
