@@ -199,7 +199,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &7377374853025349956
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -216,7 +216,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!58 &7377374853025349960
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -227,7 +228,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -544,6 +545,7 @@ MonoBehaviour:
   colliders: []
   id: Main Gun Ammo
   group: Player
+  delay: 1
   messengerSettings:
     activatedId: Activated
     deactivatedId: Deactivated
@@ -556,6 +558,7 @@ MonoBehaviour:
   activatedText: Gun Activated  Activated At %
   deactivatedText: Gun Deactivated
   reloadedText: Main Gun At %
+  load: 0
 --- !u!114 &7377374853025349972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,6 +574,7 @@ MonoBehaviour:
   colliders: []
   id: Cannon Ammo
   group: Player
+  delay: 1
   messengerSettings:
     activatedId: Activated
     deactivatedId: Deactivated
@@ -583,6 +587,7 @@ MonoBehaviour:
   activatedText: Cannons Activated At %
   deactivatedText: Cannons Deactivated
   reloadedText: Cannons At %
+  load: 0
 --- !u!114 &7377374853025349973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,6 +603,7 @@ MonoBehaviour:
   colliders: []
   id: Phaser Ammo
   group: Player
+  delay: 1
   messengerSettings:
     activatedId: Activated
     deactivatedId: Deactivated
@@ -610,6 +616,7 @@ MonoBehaviour:
   activatedText: Phaser Activated At %
   deactivatedText: Phaser Deactivated
   reloadedText: Phaser At %
+  load: 0
 --- !u!114 &7377374853025349978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,6 +632,7 @@ MonoBehaviour:
   colliders: []
   id: 3 Way Shooter Ammo
   group: Player
+  delay: 1
   messengerSettings:
     activatedId: Activated
     deactivatedId: Deactivated
@@ -637,6 +645,7 @@ MonoBehaviour:
   activatedText: 3 Way Shooter Activated At %
   deactivatedText: 3 Way Shooter Deactivated
   reloadedText: 3 Way Shooter At %
+  load: 0
 --- !u!114 &7377374853025349979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,6 +661,7 @@ MonoBehaviour:
   colliders: []
   id: Laser Ammo
   group: Player
+  delay: 1
   messengerSettings:
     activatedId: Activated
     deactivatedId: Deactivated
@@ -679,6 +689,7 @@ MonoBehaviour:
   colliders: []
   id: Missiles Ammo
   group: Player
+  delay: 1
   messengerSettings:
     activatedId: Activated
     deactivatedId: Deactivated
@@ -691,6 +702,7 @@ MonoBehaviour:
   activatedText: Missiles Activated At %
   deactivatedText: Missiles Deactivated
   reloadedText: Missiles At %
+  load: 0
 --- !u!114 &7377374853025349976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,6 +718,7 @@ MonoBehaviour:
   colliders: []
   id: Shield
   group: Player
+  delay: 1
   messengerSettings:
     activatedId: Activated
     reloadedId: Reloaded
@@ -730,6 +743,7 @@ MonoBehaviour:
   colliders: []
   id: Nuke
   group: Player
+  delay: 1
   emitter: Nuke
 --- !u!114 &7377374853025349983
 MonoBehaviour:
@@ -746,6 +760,7 @@ MonoBehaviour:
   colliders: []
   id: Health
   group: Player
+  delay: 1
   messengerSettings:
     genericId: Generic
   mode: 0
@@ -767,6 +782,7 @@ MonoBehaviour:
   colliders: []
   id: Wrecking Ball
   group: Player
+  delay: 1
   messengerSettings:
     activatedId: Activated
     reloadedId: Reloaded
@@ -793,6 +809,7 @@ MonoBehaviour:
   colliders: []
   id: Speed
   group: Player
+  delay: 1
   messengerSettings:
     genericId: Generic
   mode: 0
@@ -820,6 +837,7 @@ MonoBehaviour:
   colliders: []
   id: Energy Beam
   group: Player
+  delay: 1
   messengerSettings:
     activatedId: Activated
     reloadedId: Reloaded
@@ -844,6 +862,7 @@ MonoBehaviour:
   colliders: []
   id: Drone
   group: Player
+  delay: 1
   messengerSettings:
     activatedId: Activated
   prefab: {fileID: 2636175273757595107, guid: 7f2f0b3e70a596b44ab1705851f4ae85, type: 3}
@@ -863,6 +882,7 @@ MonoBehaviour:
   colliders: []
   id: Coin
   group: Player
+  delay: 1
   playerIndex: 0
   audioSettings:
   - audioClip: {fileID: 8300000, guid: 6433384a1880b8c45ba867a68356c589, type: 3}
@@ -932,6 +952,7 @@ MonoBehaviour:
   colliders: []
   id: 
   group: Player
+  delay: 1
   _material: Metal
   _structuralIntegrity: 100
   autoPoints: 1
@@ -1007,7 +1028,8 @@ MonoBehaviour:
     count: 15
     sustain: 1
     spriteRenderer: []
-    collisionBase: {fileID: 0}
+    collisionBase:
+    - {fileID: 0}
   scaleSettings:
     speed: 5
 --- !u!114 &6857993198576767862

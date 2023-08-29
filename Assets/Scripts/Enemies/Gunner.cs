@@ -7,9 +7,9 @@ public class Gunner : Enemy
     bool hitWall = false;
     Vector3 diagonalDirection;
 
-    public override void OnTriggerEnter(Collider other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
-        base.OnTriggerEnter(other);
+        base.OnTriggerEnter2D(other);
         if (other.tag == "Wall")
         {
             hitWall = !hitWall;

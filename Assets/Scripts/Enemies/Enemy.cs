@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     private bool isDead = true;
     public Vector3 downDirection => Vector3.up;
 
-    public virtual void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "ScreenPerimiter")
         {
