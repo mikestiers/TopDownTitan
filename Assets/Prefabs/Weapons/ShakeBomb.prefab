@@ -159,11 +159,11 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3473547323361498261, guid: 3a68613b9eef4c747a4f7e0c650765db,
     type: 3}
   firePoint: {fileID: 8347411342919598906}
-  fireSound: {fileID: 0}
+  fireSound: {fileID: 8300000, guid: a3eaa3da39bba2f4c8d7a90111fe1dd1, type: 3}
   icon: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
-  color: {r: 0, g: 0.38025475, b: 1, a: 0}
+  color: {r: 0, g: 0.19245288, b: 0.4811321, a: 1}
   fireForce: 2000
   fireRate: 0.1
-  currentBullets: 0
+  currentBullets: 1
   shakeDetectionThreshold: 2
   shakeInterval: 0.5

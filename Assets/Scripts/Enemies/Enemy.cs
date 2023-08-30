@@ -32,12 +32,12 @@ public class Enemy : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "ScreenPerimiter")
+        if (other.CompareTag("ScreenPerimiter"))
         {
             Destroy(gameObject);
         }
 
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             PlayerController player = other.GetComponent<PlayerController>();
             player.TakeDamage(1);

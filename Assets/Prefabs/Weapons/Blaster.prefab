@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2230194759572624241}
   - component: {fileID: 5761449083190051211}
   - component: {fileID: 1534715240243947371}
-  - component: {fileID: 2781735290025410060}
+  - component: {fileID: 3050019410781355086}
   m_Layer: 0
   m_Name: Blaster
   m_TagString: Untagged
@@ -139,29 +139,16 @@ MonoBehaviour:
   fireForce: 2000
   fireRate: 0.1
   currentBullets: 999
---- !u!61 &2781735290025410060
-BoxCollider2D:
+--- !u!65 &3050019410781355086
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8395419203375687846}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
