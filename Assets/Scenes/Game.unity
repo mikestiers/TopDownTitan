@@ -652,7 +652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &104872269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2634,7 +2634,7 @@ MonoBehaviour:
   scoreText: {fileID: 32018242}
   score: 0
   lives: 0
-  shields: 500
+  shields: 10
 --- !u!4 &857845865
 Transform:
   m_ObjectHideFlags: 0
@@ -2666,6 +2666,60 @@ MonoBehaviour:
   - drones: 6
     gunners: 5
     seekers: 4
+    interceptors: 2
+    juggernauts: 1
+    delay: 5
+  - drones: 2
+    gunners: 2
+    seekers: 2
+    interceptors: 2
+    juggernauts: 1
+    delay: 5
+  - drones: 2
+    gunners: 2
+    seekers: 2
+    interceptors: 2
+    juggernauts: 1
+    delay: 5
+  - drones: 2
+    gunners: 2
+    seekers: 2
+    interceptors: 2
+    juggernauts: 1
+    delay: 5
+  - drones: 2
+    gunners: 2
+    seekers: 2
+    interceptors: 2
+    juggernauts: 1
+    delay: 5
+  - drones: 2
+    gunners: 2
+    seekers: 2
+    interceptors: 2
+    juggernauts: 1
+    delay: 5
+  - drones: 2
+    gunners: 2
+    seekers: 2
+    interceptors: 2
+    juggernauts: 1
+    delay: 5
+  - drones: 2
+    gunners: 2
+    seekers: 2
+    interceptors: 2
+    juggernauts: 1
+    delay: 5
+  - drones: 2
+    gunners: 2
+    seekers: 2
+    interceptors: 2
+    juggernauts: 1
+    delay: 5
+  - drones: 2
+    gunners: 2
+    seekers: 2
     interceptors: 2
     juggernauts: 1
     delay: 5

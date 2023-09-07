@@ -1,21 +1,21 @@
-using UnityEngine;
+//using UnityEngine;
 
-#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+//#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
 
-using System.Runtime.InteropServices;
+//using System.Runtime.InteropServices;
 
-namespace Playniax.Windows
-{
+//namespace Playniax.Windows
+//{
 
-    public class Win32
-    {
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool GetCursorPos(out Vector2Int position);
+//    public class Win32
+//    {
+//        [DllImport("user32.dll")]
+//        [return: MarshalAs(UnmanagedType.Bool)]
+//        public static extern bool GetCursorPos(out Vector2Int position);
 
-        [DllImport("user32.dll")]
-        static extern bool SetCursorPos(int X, int Y);
-    }
+//        [DllImport("user32.dll")]
+//        static extern bool SetCursorPos(int X, int Y);
+//    }
 
-#endif
-}
+//#endif
+//}

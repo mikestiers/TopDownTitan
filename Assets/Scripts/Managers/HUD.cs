@@ -79,6 +79,7 @@ public class HUD : Singleton<HUD>
         {
             audio.Stop();
         }
+        Time.timeScale = 1f;
         SceneManager.UnloadSceneAsync("Game");
         SceneManager.LoadScene("Menu");
     }

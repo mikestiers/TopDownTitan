@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class ScreenFlash : MonoBehaviour
+public class ScreenFlash : Singleton<ScreenFlash>
 {
     public Image whiteScreen;
     public float flashSpeed = 1.0f;
@@ -29,7 +29,7 @@ public class ScreenFlash : MonoBehaviour
             float alpha = 0;
 
             // Play flash sound
-            audioSource.PlayOneShot(flashSound);
+            AudioManager.singleton.PlaySoundEffect(flashSound);
 
             // Flash in
             while (alpha < 1)
