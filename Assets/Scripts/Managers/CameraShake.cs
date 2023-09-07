@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    public float shakeDuration = 0.5f; // Duration of the shake in seconds
-    public float shakeMagnitude = 0.7f; // Amplitude of the shake. Larger value shakes harder.
+    public float shakeDuration = 0.25f; // Duration of the shake in seconds
+    public float shakeMagnitude = 0.25f; // Amplitude of the shake. Larger value shakes harder.
     public float dampingSpeed = 1.0f; // Damping speed to return to the initial position
 
     Vector3 initialPosition;

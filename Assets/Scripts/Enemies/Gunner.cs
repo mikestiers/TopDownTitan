@@ -7,9 +7,9 @@ public class Gunner : Enemy
     bool hitWall = false;
     Vector3 diagonalDirection;
 
-    public override void OnTriggerEnter(Collider other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
-        base.OnTriggerEnter(other);
+        base.OnTriggerEnter2D(other);
         if (other.tag == "Wall")
         {
             hitWall = !hitWall;
@@ -33,14 +33,21 @@ public class Gunner : Enemy
             weapon.Fire(enemyCollider);
         }
 
+        // Check for screen boundaries
+        Vector3 screenPos = Camera.main.WorldToViewportPoint(transform.position);
+        if (screenPos.x > 1 || screenPos.x < 0)
+        {
+            hitWall = !hitWall;
+        }
+
         // Calculate the diagonal movement direction
         if (hitWall)
         {
-            diagonalDirection = -Vector3.right + downDirection;
+            diagonalDirection = transform.up + (-transform.right);
         }
         else
         {
-            diagonalDirection = Vector3.right + downDirection;
+            diagonalDirection = transform.up + (transform.right);
         }
 
         // Normalize the direction to maintain a consistent movement speed

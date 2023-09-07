@@ -19,6 +19,6 @@ public class Drone : Enemy
             weapon.Fire(enemyCollider);
         }
 
-        transform.Translate(moveSpeed * Time.deltaTime * downDirection);
+        transform.Translate(moveSpeed * Time.deltaTime * transform.up);
     }
 }

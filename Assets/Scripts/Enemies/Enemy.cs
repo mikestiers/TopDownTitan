@@ -4,29 +4,40 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public static int enemyCount = 0;
     public float fireCoolDown = 2.0f;
     public string enemyType;
-    public string attackPattern;
+    public AttackPattern attackPattern = AttackPattern.Default;
     public float moveSpeed = 5.0f;
     public float health;
     public AudioClip deathSound;
     public Weapon weapon;
-    public CapsuleCollider enemyCollider;
+    public Collider2D enemyCollider;
     public Transform playerTransform;
     public WeaponPickup droppedWeaponPrefab;
     public float dropChance = 0.25f; // 25% chance of dropping a pickup
     public ParticleSystem destructionEffect;
     private bool isDead = true;
-    public Vector3 downDirection => -transform.up;
+    public Vector3 downDirection => Vector3.up;
 
-    public virtual void OnTriggerEnter(Collider other)
+    private void OnEnable()
     {
-        if (other.tag == "ScreenPerimiter")
+        enemyCount++;
+    }
+
+    private void OnDisable()
+    {
+        enemyCount--;
+    }
+
+    public virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("ScreenPerimiter"))
         {
             Destroy(gameObject);
         }
 
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             PlayerController player = other.GetComponent<PlayerController>();
             player.TakeDamage(1);
@@ -49,7 +60,7 @@ public class Enemy : MonoBehaviour
             isDead = true; // Assuming you have an isDead flag to disable movement, etc.
 
             // Disable the collider
-            Collider enemyCollider = GetComponent<Collider>();
+            Collider2D enemyCollider = GetComponent<Collider2D>();
             if (enemyCollider)
             {
                 enemyCollider.enabled = false;
@@ -84,7 +95,6 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(delay);
         DestroyEnemy();
     }
-
 
     void DropPickup()
     {

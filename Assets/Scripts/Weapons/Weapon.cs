@@ -15,5 +15,5 @@ public abstract class Weapon : MonoBehaviour
     public int currentBullets;
     [System.NonSerialized] public float nextFireTime = 0.0f;
 
-    public abstract void Fire(Collider shooter);
+    public abstract void Fire(Collider2D shooter);
 }

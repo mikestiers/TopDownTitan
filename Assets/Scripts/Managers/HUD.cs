@@ -11,6 +11,8 @@ public class HUD : Singleton<HUD>
     public Text livesText;
     public Text scoreText;
     public Text highScoreText;
+    public GameObject waveCanvas;
+    public Text waveText;
     public Transform weaponSelectorGrid;
     public Text shieldText;
     public GameObject weaponButtonPrefab;
@@ -77,6 +79,7 @@ public class HUD : Singleton<HUD>
         {
             audio.Stop();
         }
+        Time.timeScale = 1f;
         SceneManager.UnloadSceneAsync("Game");
         SceneManager.LoadScene("Menu");
     }
