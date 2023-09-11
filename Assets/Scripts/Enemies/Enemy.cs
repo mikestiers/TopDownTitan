@@ -20,10 +20,10 @@ public class Enemy : MonoBehaviour
     private bool isDead = true;
     public Vector3 downDirection => Vector3.up;
 
-    private void OnEnable()
-    {
-        enemyCount++;
-    }
+    //private void OnEnable()
+    //{
+    //    enemyCount++;
+    //}
 
     private void OnDisable()
     {
@@ -32,10 +32,10 @@ public class Enemy : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("ScreenPerimiter"))
-        {
-            Destroy(gameObject);
-        }
+        //if (other.CompareTag("ScreenPerimiter"))
+        //{
+        //    Destroy(gameObject);
+        //}
 
         if (other.CompareTag("Player"))
         {
@@ -48,6 +48,12 @@ public class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    protected virtual void Update()
+    {
+        if (transform.position.y < -22)
+            Destroy(gameObject);
     }
 
     public void TakeDamage(float damage)
@@ -84,7 +90,8 @@ public class Enemy : MonoBehaviour
                 destructionEffect.Play();
                 Camera.main.GetComponent<CameraShake>().TriggerShake();
                 AudioManager.singleton.PlaySoundEffect(deathSound);
-                StartCoroutine(DestroyAfterEffect(destructionEffect.main.duration));
+                //StartCoroutine(DestroyAfterEffect(destructionEffect.main.duration));
+                Destroy(gameObject, destructionEffect.main.duration);
             }
             //DestroyEnemy();
         }

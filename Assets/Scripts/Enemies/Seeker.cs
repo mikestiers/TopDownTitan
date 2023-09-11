@@ -13,8 +13,9 @@ public class Seeker : Enemy
         base.Start();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (Time.realtimeSinceStartup >= fireCoolDown)
         {
             fireCoolDown = Time.realtimeSinceStartup + fireCoolDown;

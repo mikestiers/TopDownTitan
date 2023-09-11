@@ -18,8 +18,9 @@ public class Juggernaut : Enemy
         initialPosition = new Vector3(transform.position.x, transform.position.y, 0);
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (Time.realtimeSinceStartup >= fireCoolDown)
         {
             fireCoolDown = Time.realtimeSinceStartup + fireCoolDown;

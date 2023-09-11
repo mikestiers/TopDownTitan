@@ -9,11 +9,12 @@ public class Gunner : Enemy
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Hello");
         base.OnTriggerEnter2D(other);
-        if (other.tag == "Wall")
-        {
-            hitWall = !hitWall;
-        }
+        //if (other.tag == "Wall")
+        //{
+        //    hitWall = !hitWall;
+        //}
     }
 
     protected override void Start()
@@ -25,8 +26,9 @@ public class Gunner : Enemy
         base.Start();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (Time.realtimeSinceStartup >= fireCoolDown)
         {
             fireCoolDown = Time.realtimeSinceStartup + fireCoolDown;

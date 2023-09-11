@@ -585,6 +585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 97481533}
   - component: {fileID: 97481534}
+  - component: {fileID: 97481535}
   m_Layer: 0
   m_Name: Bottom
   m_TagString: ScreenPerimiter
@@ -634,6 +635,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4999665, y: 2.0113697}
   m_EdgeRadius: 0
+--- !u!50 &97481535
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97481531}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &104872268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2947,7 +2969,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -2955,7 +2977,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 963194228}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 0
@@ -3470,13 +3492,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1123508991}
   - component: {fileID: 1123508990}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PostProcessingVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1123508990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5335,6 +5357,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShakeBomb2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325987995066153553, guid: 998b11bca8b8c1f41bdc6f1e40df4b2f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1325987995066153555, guid: 998b11bca8b8c1f41bdc6f1e40df4b2f,
         type: 3}

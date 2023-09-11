@@ -37,6 +37,9 @@ public class EnemySpawnerV2 : MonoBehaviour
             yield return new WaitForSeconds(waves[currentWave].delay);
             HUD.singleton.waveCanvas.SetActive(false);
 
+            // Set the amount of enemies to spawn
+            Enemy.enemyCount = waves[currentWave].drones + waves[currentWave].gunners + waves[currentWave].seekers + (waves[currentWave].interceptors * 5);
+
             // Spawn enemies based on current wave's instruction
             StartCoroutine(SpawnEnemy(dronePrefab, waves[currentWave].drones, 2f));
             StartCoroutine(SpawnEnemy(gunnerPrefab, waves[currentWave].gunners, 5f));
@@ -44,7 +47,9 @@ public class EnemySpawnerV2 : MonoBehaviour
             StartCoroutine(SpawnEnemy(interceptorPrefab, waves[currentWave].interceptors, 10f));
 
             // Wait until all enemies are defeated and spawn boss
+            Debug.Log("Current count = " + Enemy.enemyCount);
             yield return new WaitUntil(() => Enemy.enemyCount == 0);
+            Enemy.enemyCount = 1;
             SpawnBoss(juggernautPrefab);
             // Wait until boss dies
             yield return new WaitUntil(() => Enemy.enemyCount == 0);
