@@ -28,7 +28,7 @@ public class WeaponInventory : Singleton<WeaponInventory>
             Weapon w = Instantiate(weapon.gameObject, transform).GetComponent<Weapon>();
             weapons.Add(w);
             HUD.singleton.CreateWeaponButton(w, weapons.Count - 1);
-            EquipWeapon(weapons.Count - 1);
+            //EquipWeapon(weapons.Count - 1);
         }
         else
         {
