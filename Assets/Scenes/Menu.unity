@@ -2287,7 +2287,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -2299,8 +2299,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Programming: \nMike Stiers VGP202\n\nSound Effects:\nsound-ideas.com library
-    60\n\nMusic:\nCrusing Down 8bit Lane by Monument_Music\nLeave The World Tonight
-    - Kim Lightyear\n\nArt Assets:\nSpace Shoter Art Pack 01 on Unity Store"
+    60\n\nFont: Nasalization-free from 1001fonts.com\n\nMusic:\nCrusing Down 8bit
+    Lane by Monument_Music\nLeave The World Tonight - Kim Lightyear\n\nArt Assets:\nSpace
+    Shoter Art Pack 01 on Unity Store"
 --- !u!222 &1648107493
 CanvasRenderer:
   m_ObjectHideFlags: 0
