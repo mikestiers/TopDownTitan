@@ -7,11 +7,21 @@ public class ShakeBomb : Weapon
 {
     public float shakeDetectionThreshold = 2.0f;
     public float shakeInterval = 0.5f;
+    public float shakeBombRadius = 10f;
+    public float damage = 1000f;
     private float timeSinceLastShake = 0.0f;
 
     void Update()
     {
         timeSinceLastShake += Time.deltaTime;
+
+#if UNITY_EDITOR
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Fire(null);
+        }
+#endif
 
         // Check if enough time has passed since the last shake
         if (timeSinceLastShake > shakeInterval)
@@ -26,7 +36,7 @@ public class ShakeBomb : Weapon
             if (accelerationMagnitude > shakeDetectionThreshold)
             {
                 // A shake has been detected, drop shakebomb
-                //Fire(player);
+                Fire(null);
 
                 // Reset the time since the last shake
                 timeSinceLastShake = 0.0f;
@@ -40,9 +50,16 @@ public class ShakeBomb : Weapon
         {
             if (Time.time > nextFireTime)
             {
-                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), shooter, true);
-                bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce); //, ForceMode.Impulse);
+                Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, shakeBombRadius);
+                foreach (Collider2D hit in hits)
+                {
+                    Debug.Log("shake " + hit.transform.root.name, hit.transform.root);
+                    Enemy e = hit.transform.root.GetComponent<Enemy>();
+                    if (e != null)
+                    {
+                        e.TakeDamage(damage);
+                    }
+                }
                 AudioManager.singleton.PlaySoundEffect(fireSound);
 
                 // Set the next fire time

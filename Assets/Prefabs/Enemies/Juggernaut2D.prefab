@@ -169,7 +169,7 @@ MonoBehaviour:
   enemyType: 
   attackPattern: 0
   moveSpeed: 2
-  health: 100
+  health: 1000
   deathSound: {fileID: 8300000, guid: 8633e6b75a9a20f4d8b07c253ca804c7, type: 3}
   weapon: {fileID: -3022447784932871846, guid: 6b802d63b930918419865f7d4b06cff7, type: 3}
   enemyCollider: {fileID: 2895212253817925085}

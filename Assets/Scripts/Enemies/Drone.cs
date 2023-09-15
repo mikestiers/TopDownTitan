@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Drone : Enemy
 {
-    private void Start()
+    protected override void Start()
     {
         // Instantiate the starting weapon and set it as the active weapon
         weapon = Instantiate(weapon, transform);
         base.Start();
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         if (Time.realtimeSinceStartup >= fireCoolDown)
         {
             fireCoolDown = Time.realtimeSinceStartup + fireCoolDown;
