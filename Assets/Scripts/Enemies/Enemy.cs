@@ -61,6 +61,7 @@ public class Enemy : MonoBehaviour
 
             // Disable the collider
             Collider2D enemyCollider = GetComponent<Collider2D>();
+
             if (enemyCollider)
             {
                 enemyCollider.enabled = false;
