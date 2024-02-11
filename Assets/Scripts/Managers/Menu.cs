@@ -11,6 +11,7 @@ public class Menu : MonoBehaviour
     public Button playButton;
     public Button instructionsButton;
     public Button creditsButton;
+    public Button highScoresButton;
     public GameObject mainMenuCharacter;
     private float hoverRange = 0.5f;
     private float hoverSpeed = 1.0f;
@@ -24,6 +25,10 @@ public class Menu : MonoBehaviour
     public GameObject creditsCanvas;
     public Button creditsBackButton;
 
+    [Header("High Scores Menu")]
+    public GameObject highScoresCanvas;
+    public Button highScoresBackButton;
+
     [Header("Audio")]
     public AudioClip music;
 
@@ -32,8 +37,10 @@ public class Menu : MonoBehaviour
         playButton.onClick.AddListener(Play);
         instructionsButton.onClick.AddListener(InstructionsMenu);
         creditsButton.onClick.AddListener(CreditsMenu);
+        highScoresButton.onClick.AddListener(HighScoresMenu);
         instructionsBackButton.onClick.AddListener(BackToMain);
         creditsBackButton.onClick.AddListener(BackToMain);
+        highScoresBackButton.onClick.AddListener(BackToMain);
         AudioManager.singleton.PlayMusic(music);
         AudioManager.singleton.SetMusicVolume(25.0f);
         AudioManager.singleton.SetSoundEffectVolume(25.0f);
@@ -66,10 +73,17 @@ public class Menu : MonoBehaviour
         creditsCanvas.SetActive(true);
     }
 
+    void HighScoresMenu()
+    {
+        mainCanvas.SetActive(false);
+        highScoresCanvas.SetActive(true);
+    }
+
     void BackToMain()
     {
         mainCanvas.SetActive(true);
         instructionsCanvas.SetActive(false);
         creditsCanvas.SetActive(false);
+        highScoresCanvas.SetActive(false);
     }
 }

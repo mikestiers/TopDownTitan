@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -30,10 +31,17 @@ public class HUD : Singleton<HUD>
     [Header("Game Over Menu")]
     public GameObject gameOverMenuCanvas;
     public Button restartButton;
+    public Button postHighScoreButton;
+    public InputField nameInputField;
 
     private float lastMusicVolume = 0.25f;
     private float lastSoundVolume = 0.25f;
     private List<WeaponButton> weaponButtons = new List<WeaponButton>();
+
+    [Header("Ad Manager")]
+    public AdsInitializerGameOver adsInitializerGameOver;
+    //public AzureDataPoster azureDataPoster;
+    public RewardedAdsButtonGameOver rewardedAdsButtonGameOver;
 
     void Start()
     {
@@ -45,7 +53,9 @@ public class HUD : Singleton<HUD>
         soundOnOffButton.onClick.AddListener(MuteSound);
         soundVolumeSlider.onValueChanged.AddListener(SetSoundVolume);
         restartButton.onClick.AddListener(Quit);
+        postHighScoreButton.onClick.AddListener(PostHighScore);
         UpdateShields(GameManager.singleton.shields);
+        rewardedAdsButtonGameOver.LoadAd();
     }
 
     private void Update()
@@ -54,6 +64,16 @@ public class HUD : Singleton<HUD>
         {
             Pause();
         }
+    }
+
+    void PostHighScore()
+    {
+        AzureTableManager.Highscore highscore = new AzureTableManager.Highscore();
+        highscore.PartitionKey = "Highscore";
+        highscore.RowKey = System.Guid.NewGuid().ToString();
+        highscore.name = nameInputField.text;
+        highscore.score = GameManager.singleton.score;
+        rewardedAdsButtonGameOver.AddHighscore(highscore);
     }
 
     public void Pause()
@@ -70,7 +90,7 @@ public class HUD : Singleton<HUD>
         Time.timeScale = 1f;
     }
 
-    void Quit()
+    public void Quit()
     {
         Destroy(gameObject);
         Destroy(GameManager.singleton.gameObject);
